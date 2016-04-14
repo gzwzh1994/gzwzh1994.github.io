@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>http://yoursite.com/2016/04/10/%E5%B8%B8%E8%A7%81RAID%E4%BB%8B%E7%BB%8D/</loc>
     <lastmod>2016-04-13T13:28:00.000Z</lastmod>
@@ -60,13 +61,13 @@
         <title>Linux文本搜索工具grep</title>
         <pubTime>2016-03-28T14:21:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>grep</tag>
          
         <tag>egrep</tag>
          
         <tag>fgrep</tag>
+         
+        <tag>Linux</tag>
          
          
            

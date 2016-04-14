@@ -1,22 +1,758 @@
-<!doctype html><html class="theme-next mist use-motion"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css"><meta name="keywords" content="Linux,man,"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1"><meta name="description" content="我们有一下几种主要的帮助获取方式：
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,man," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="我们有一下几种主要的帮助获取方式：
 使用命令内建的选项获取帮助
 使用手册(manual)
 使用info查看命令的信息页
 查看软件自带的帮助文档
 查看软件官方的帮助文档
 查看发行版的官方文档
-使用搜索引擎获取帮助信息"><meta property="og:type" content="article"><meta property="og:title" content="Linux帮助信息的获取"><meta property="og:url" content="http://yoursite.com/2016/03/24/Linux帮助信息的获取/index.html"><meta property="og:site_name" content="gzwzh1994的博客"><meta property="og:description" content="我们有一下几种主要的帮助获取方式：
+使用搜索引擎获取帮助信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux帮助信息的获取">
+<meta property="og:url" content="http://yoursite.com/2016/03/24/Linux帮助信息的获取/index.html">
+<meta property="og:site_name" content="gzwzh1994的博客">
+<meta property="og:description" content="我们有一下几种主要的帮助获取方式：
 使用命令内建的选项获取帮助
 使用手册(manual)
 使用info查看命令的信息页
 查看软件自带的帮助文档
 查看软件官方的帮助文档
 查看发行版的官方文档
-使用搜索引擎获取帮助信息"><meta property="og:updated_time" content="2016-04-12T10:21:00.000Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Linux帮助信息的获取"><meta name="twitter:description" content="我们有一下几种主要的帮助获取方式：
+使用搜索引擎获取帮助信息">
+<meta property="og:updated_time" content="2016-04-12T10:21:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux帮助信息的获取">
+<meta name="twitter:description" content="我们有一下几种主要的帮助获取方式：
 使用命令内建的选项获取帮助
 使用手册(manual)
 使用info查看命令的信息页
 查看软件自带的帮助文档
 查看软件官方的帮助文档
 查看发行版的官方文档
-使用搜索引擎获取帮助信息"><script type="text/javascript" id="hexo.configuration">var NexT=window.NexT||{},CONFIG={scheme:"Mist",sidebar:{position:"left",display:"hide"},fancybox:!0,motion:!0,duoshuo:{userId:0,author:"博主"}}</script><title> Linux帮助信息的获取 | gzwzh1994的博客</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="//hm.baidu.com/hm.js?a8b1db5a4a7afe6d407861a40952d9ae";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)}()</script><div class="container one-collumn sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">gzwzh1994的博客</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-home fa-fw"></i><br> 首页</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-th fa-fw"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-archive fa-fw"></i><br> 归档</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-tags fa-fw"></i><br> 标签</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><header class="post-header"><h1 class="post-title" itemprop="name headline"> Linux帮助信息的获取</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time itemprop="dateCreated" datetime="2016-03-24T15:31:00+08:00" content="2016-03-24">2016-03-24</time></span> <span class="post-category">&nbsp; | &nbsp;<span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span></span> <span id="/2016/03/24/Linux帮助信息的获取/" class="leancloud_visitors" data-flag-title="Linux帮助信息的获取">&nbsp; | &nbsp;<span class="post-meta-item-icon"><i class="fa fa-eye"></i></span> <span class="post-meta-item-text">阅读次数</span><span class="leancloud-visitors-count"></span></span></div></header><div class="post-body" itemprop="articleBody"><h2 id="我们有一下几种主要的帮助获取方式："><a href="#我们有一下几种主要的帮助获取方式：" class="headerlink" title="我们有一下几种主要的帮助获取方式："></a>我们有一下几种主要的帮助获取方式：</h2><ol><li>使用命令内建的选项获取帮助</li><li>使用手册(manual)</li><li>使用info查看命令的信息页</li><li>查看软件自带的帮助文档</li><li>查看软件官方的帮助文档</li><li>查看发行版的官方文档</li><li>使用搜索引擎获取帮助信息<a id="more"></a></li></ol><hr><h3 id="1、如何使用命令内建的选项来获取帮助"><a href="#1、如何使用命令内建的选项来获取帮助" class="headerlink" title="1、如何使用命令内建的选项来获取帮助"></a>1、如何使用命令内建的选项来获取帮助</h3><p>首先我们要知道在Linux中命令分为内部命令和外部命令<br>　　内部命令：由Shell自带，而且通过某命令形式提供<br>　　外部命令：在当前系统路径下有对应的可执行文件</p><p>内部命令和外部命令可以通过type命令进行区分<br>Example: type COMMAND</p><p><strong>注：</strong>内部命令与外部命令的查找帮助的方式是不同的<br>Example:<br>　　内部命令： help COMMAND<br>　　外部命令： COMMAND –help</p><p>以cat命令为例介绍命令的格式与使用<br></p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> --<span class="keyword">help</span></span><br><span class="line">Usage: <span class="keyword">cat</span> [OPTION]... [FILE]...</span><br><span class="line">Concatenate FILE(s), <span class="built_in">or</span> standard <span class="built_in">input</span>, <span class="keyword">to</span> standard output.</span><br><span class="line">  -A, --show-<span class="keyword">all</span>           equivalent <span class="keyword">to</span> -vET</span><br><span class="line">  -<span class="keyword">b</span>, --<span class="keyword">number</span>-nonblank    <span class="keyword">number</span> nonempty output lines</span><br><span class="line">  -<span class="keyword">e</span>                       equivalent <span class="keyword">to</span> -vE</span><br><span class="line">  -E, --show-ends          <span class="keyword">display</span> $ at end of each <span class="built_in">line</span></span><br><span class="line">  -n, --<span class="keyword">number</span>             <span class="keyword">number</span> <span class="keyword">all</span> output lines</span><br><span class="line">  -s, --squeeze-blank      suppress repeated <span class="built_in">empty</span> output lines</span><br><span class="line">  -t                       equivalent <span class="keyword">to</span> -vT</span><br><span class="line">  -T, --show-<span class="keyword">tabs</span>          <span class="keyword">display</span> TAB characters <span class="keyword">as</span> ^I</span><br><span class="line">  -<span class="keyword">u</span>                       (ignored)</span><br><span class="line">  -v, --show-nonprinting   use ^ <span class="built_in">and</span> M- notation, except <span class="keyword">for</span> LFD <span class="built_in">and</span> TAB</span><br><span class="line">      --<span class="keyword">help</span>     <span class="keyword">display</span> this <span class="keyword">help</span> <span class="built_in">and</span> <span class="keyword">exit</span></span><br><span class="line">      --<span class="keyword">version</span>  output <span class="keyword">version</span> information <span class="built_in">and</span> <span class="keyword">exit</span></span><br><span class="line"></span><br><span class="line">With <span class="keyword">no</span> FILE, <span class="built_in">or</span> when FILE <span class="keyword">is</span> -, <span class="keyword">read</span> standard <span class="built_in">input</span>.</span><br><span class="line">Example<span class="variable">s:</span></span><br><span class="line">  <span class="keyword">cat</span> <span class="keyword">f</span> - g  Output <span class="keyword">f</span><span class="string">'s contents, then standard input, then g'</span>s contents.</span><br><span class="line">  <span class="keyword">cat</span>        Copy standard <span class="built_in">input</span> <span class="keyword">to</span> standard output.</span><br><span class="line">Report <span class="keyword">cat</span> bugs <span class="keyword">to</span> bug-coreutils@gnu.org</span><br><span class="line">GNU coreutils home page: &lt;http://www.gnu.org/software/coreutils/&gt;</span><br><span class="line">General <span class="keyword">help</span> using GNU software: &lt;http://www.gnu.org/gethelp/&gt;</span><br><span class="line">For <span class="built_in">complete</span> documentation, run: info coreutils <span class="string">'cat invocation'</span></span><br></pre></td></tr></table></figure><p></p><p><strong>一般而言一个完整的命令是由选项和参数组成的</strong><br>　　<strong>COMMAND [OPTIONS…] [ARGUMENTS…]</strong><br>　　<strong>选项(OPTIONS):</strong>用于启用或关闭命令的某个或某些功能<br>　　　　短选项：-n, 例如：-v, -E 多个短选项可命令使用，例如-v -E,可写作-vE；<br>　　　　长选项：–number，例如：–help, –show-all<br>　　<strong>参数(ARGUMENTS):</strong>命令的作用对象<br>　　　　向命令提供数据；</p><p>我们现在还需要了解一些符号的作用<br>　[]：可选内容<br>　…：表示可以同一内容可以出现多次<br>　&lt;&gt;：必选内容<br>　a|b：二选一或者多选一</p><p>了解了符号的作用,我们就可以得知上述帮助中的意思了</p><hr><h3 id="2、使用手册-manual-来获取帮助"><a href="#2、使用手册-manual-来获取帮助" class="headerlink" title="2、使用手册(manual)来获取帮助"></a>2、使用手册(manual)来获取帮助</h3><p>man命令其实是调用/usr/share/man/[man1-man8]中的对应命令的手册,再解压到临时目录,然后使用less来进行显示</p><p>man命令有不同章节来实现对于手册页进行分类<br>man1:用户命令<br>man2:系统调用<br>man3:C库调用<br>man4:设备文件及特殊文件<br>man5:配置文件格式<br>man6:游戏<br>man7:杂项<br>man8:管理类的命令</p><p><strong>注意:</strong>有些命令在不止一个章节中存在帮助手册，可以使用whatis COMMAND来查看命令在哪些章节有帮助手册<br></p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看指定章节中的手册：<span class="keyword">man</span> # COMMAND</span><br><span class="line"><span class="keyword">man</span>命令的配置文件：/etc/<span class="keyword">man</span>.config</span><br><span class="line">MANPATH /PATH/TO/SOMEWHERE:指明新的手册文件搜索位置</span><br><span class="line"><span class="keyword">man</span> -<span class="keyword">M</span> /PATH/TO/SOMEWHERE COMMAND: 到指定位置下搜索COMMAND命令的手册页并显示之</span><br></pre></td></tr></table></figure><p></p><p>帮助手册中一般遵循相关格式进行编写,这里简要的说明一下相关段落及作用<br><strong>NAME:</strong>简要的说明命令的名称和作用<br><strong>SYSNOPSIS:</strong>命令的简要使用帮助<br><strong>DESCRIPTION:</strong>一些参数或选项的简要说明<br><strong>OPTIONS:</strong>选项<br><strong>AUTHOR:</strong>作者<br><strong>REPORTING BUGS:</strong>提供BUG的地址</p><p>注：手册通过使用less显示<br></p><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">手册页的操作方法：</span><br><span class="line">	Space, <span class="symbol">^V</span>, <span class="symbol">^f</span>, <span class="symbol">^F</span>: 向文件尾翻屏；</span><br><span class="line">	b, <span class="symbol">^B</span>: 向文件首部翻屏；</span><br><span class="line">	<span class="keyword">d</span>, <span class="symbol">^D</span>: 向文件尾部翻半屏；</span><br><span class="line">	u, <span class="symbol">^U</span>: 向文件首部翻半屏；</span><br><span class="line">	<span class="keyword">RETURN</span>, <span class="symbol">^N</span>, e, <span class="symbol">^E</span> or <span class="keyword">j</span> or <span class="symbol">^J</span>: 向文件尾部翻一行；</span><br><span class="line">	y or <span class="symbol">^Y</span> or <span class="symbol">^P</span> or <span class="keyword">k</span> or <span class="symbol">^K</span>：向文件首部翻一行；</span><br><span class="line">	<span class="keyword">q</span>: 退出；</span><br><span class="line">	#：跳转至第#行；</span><br><span class="line">	<span class="number">1</span>G: 回到文件首部</span><br><span class="line">	G：翻至文件尾部</span><br><span class="line">文本搜索：</span><br><span class="line">    /KEYWORD:以KEYWORD指定的字符串为关键字，从当前位置向文件尾部搜索；不区分字符大小写；</span><br><span class="line">		 n: 下一个</span><br><span class="line">		 N：上一个</span><br><span class="line">    ?KEYWORD:以KEYWORD指定的字符串为关键字，从当前位置向文件首部搜索；不区分字符大小写；</span><br><span class="line">		 n: 跟搜索命令同方向，下一个</span><br><span class="line">		 N：跟搜索命令反方向，上一个</span><br></pre></td></tr></table></figure><p></p><hr><h3 id="3、使用info命令获取帮助"><a href="#3、使用info命令获取帮助" class="headerlink" title="3、使用info命令获取帮助"></a>3、使用info命令获取帮助</h3><p>就内容来说，info页面比man page编写得要更好、更容易理解，也更友好，但man page使用起来确实要更容易得多。一个man page只有一页，而info页面几乎总是将它们的内容组织成多个区段（称为节点），每个区段也可能包含子区段（称为子节点）。理解这个命令的窍门就是不仅要学习如何在单独的Info页面中浏览导航，还要学习如何在节点和子节点之间切换。可能刚开始会一时很难在info页面的节点之间移动和找到你要的东西，真是具有讽刺意味：原本以为对于新手来说，某个东西比man命令会更好些，但实际上学习和使用起来更困难。<br>详细使用方法可查阅: <a href="http://man.linuxde.net/info" target="_blank" rel="external">http://man.linuxde.net/info</a></p><p><strong>注意：仅在man手册无法获取到足够信息，或想了解程序的开发历史时才使用info</strong></p><hr><h3 id="4、查看软件自带的帮助文档"><a href="#4、查看软件自带的帮助文档" class="headerlink" title="4、查看软件自带的帮助文档"></a>4、查看软件自带的帮助文档</h3><p>软件自带的帮助文档一般存储在/usr/share/doc/Software-Version/ 中<br>ChangeLog: 程序版本升级的变动情况<br>INSTALL: 安装方法说明<br>README：程序说明信息</p><hr><h3 id="5、查看软件官方的帮助文档"><a href="#5、查看软件官方的帮助文档" class="headerlink" title="5、查看软件官方的帮助文档"></a>5、查看软件官方的帮助文档</h3><p>查看软件官方站点公布的软件文档</p><hr><h3 id="6、查看Linux发行版的官方文档"><a href="#6、查看Linux发行版的官方文档" class="headerlink" title="6、查看Linux发行版的官方文档"></a>6、查看Linux发行版的官方文档</h3><p>红帽官方文档：<a href="http://www.redhat.com/docs" target="_blank" rel="external">http://www.redhat.com/docs</a><br>Ubuntu社区文档<a href="http://community.ubuntu.com/contribute/documentation/" target="_blank" rel="external">http://community.ubuntu.com/contribute/documentation/</a></p><hr><h3 id="7、使用搜索引擎获取帮助信息"><a href="#7、使用搜索引擎获取帮助信息" class="headerlink" title="7、使用搜索引擎获取帮助信息"></a>7、使用搜索引擎获取帮助信息</h3><p>良好的使用谷歌、百度等搜索引擎快速便捷的获取帮助信息<br>附：<a href="https://www.zhihu.com/question/20161362" target="_blank" rel="external">知乎:如何用好Google等搜索引擎?</a></p></div><div></div><div></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/Linux/" rel="tag">#Linux</a> <a href="/tags/man/" rel="tag">#man</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"></div><div class="post-nav-prev post-nav-item"> <a href="/2016/03/28/Linux文本搜索工具grep/" rel="prev" title="Linux文本搜索工具grep">Linux文本搜索工具grep<i class="fa fa-chevron-right"></i></a></div></div></footer></article><div class="post-spread"></div></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview"> 站点概览</li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="gzwzh1994"><p class="site-author-name" itemprop="name">gzwzh1994</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives"><span class="site-state-item-count">4</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories"><span class="site-state-item-count">1</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags"><span class="site-state-item-count">9</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/gzwzh1994" target="_blank"><i class="fa fa-github"></i> GitHub</a></span></div><div class="links-of-blogroll motion-element"></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我们有一下几种主要的帮助获取方式："><span class="nav-number">1.</span> <span class="nav-text">我们有一下几种主要的帮助获取方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、如何使用命令内建的选项来获取帮助"><span class="nav-number">1.1.</span> <span class="nav-text">1、如何使用命令内建的选项来获取帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用手册-manual-来获取帮助"><span class="nav-number">1.2.</span> <span class="nav-text">2、使用手册(manual)来获取帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、使用info命令获取帮助"><span class="nav-number">1.3.</span> <span class="nav-text">3、使用info命令获取帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、查看软件自带的帮助文档"><span class="nav-number">1.4.</span> <span class="nav-text">4、查看软件自带的帮助文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、查看软件官方的帮助文档"><span class="nav-number">1.5.</span> <span class="nav-text">5、查看软件官方的帮助文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、查看Linux发行版的官方文档"><span class="nav-number">1.6.</span> <span class="nav-text">6、查看Linux发行版的官方文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、使用搜索引擎获取帮助信息"><span class="nav-number">1.7.</span> <span class="nav-text">7、使用搜索引擎获取帮助信息</span></a></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright"> &copy; <span itemprop="copyrightYear">2016</span><span class="with-love"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">gzwzh1994</span></div><div class="powered-by"> 由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动</div><div class="theme-info"> 主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script><script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script><script>AV.initialize("FxOjsFAHfwe9GUQwgokVUUhx-gzGzoHsz","uVlSnORqlDd8QQft8fqqv5zK")</script><script>function showTime(e){var t=new AV.Query(e),n=[],o=$(".leancloud_visitors");o.each(function(){n.push($(this).attr("id").trim())}),t.containedIn("url",n),t.find().done(function(e){var t=".leancloud-visitors-count";if(0===e.length)return void o.find(t).text(0);for(var n=0;n<e.length;n++){var i=e[n],r=i.get("url"),l=i.get("time"),s=document.getElementById(r);$(s).find(t).text(l)}}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(e){var t=$(".leancloud_visitors"),n=t.attr("id").trim(),o=t.attr("data-flag-title").trim(),i=new AV.Query(e);i.equalTo("url",n),i.find({success:function(t){if(t.length>0){var i=t[0];i.fetchWhenSave(!0),i.increment("time"),i.save(null,{success:function(e){var t=$(document.getElementById(n));t.find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var r=new e;r.set("title",o),r.set("url",n),r.set("time",1),r.save(null,{success:function(e){var t=$(document.getElementById(n));t.find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):$(".post-title-link").length>1&&showTime(e)})</script></body></html>
+使用搜索引擎获取帮助信息">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Linux帮助信息的获取 | gzwzh1994的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a8b1db5a4a7afe6d407861a40952d9ae";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">gzwzh1994的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux帮助信息的获取
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-24T15:31:00+08:00" content="2016-03-24">
+              2016-03-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/24/Linux帮助信息的获取/" class="leancloud_visitors" data-flag-title="Linux帮助信息的获取">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="我们有一下几种主要的帮助获取方式："><a href="#我们有一下几种主要的帮助获取方式：" class="headerlink" title="我们有一下几种主要的帮助获取方式："></a>我们有一下几种主要的帮助获取方式：</h2><ol>
+<li>使用命令内建的选项获取帮助</li>
+<li>使用手册(manual)</li>
+<li>使用info查看命令的信息页</li>
+<li>查看软件自带的帮助文档</li>
+<li>查看软件官方的帮助文档</li>
+<li>查看发行版的官方文档</li>
+<li>使用搜索引擎获取帮助信息<a id="more"></a>
+</li>
+</ol>
+<hr>
+<h3 id="1、如何使用命令内建的选项来获取帮助"><a href="#1、如何使用命令内建的选项来获取帮助" class="headerlink" title="1、如何使用命令内建的选项来获取帮助"></a>1、如何使用命令内建的选项来获取帮助</h3><p>首先我们要知道在Linux中命令分为内部命令和外部命令<br>　　内部命令：由Shell自带，而且通过某命令形式提供<br>　　外部命令：在当前系统路径下有对应的可执行文件</p>
+<p>内部命令和外部命令可以通过type命令进行区分<br>Example: type COMMAND</p>
+<p><strong>注：</strong>内部命令与外部命令的查找帮助的方式是不同的<br>Example:<br>　　内部命令：  help COMMAND<br>　　外部命令：  COMMAND –help</p>
+<p>以cat命令为例介绍命令的格式与使用<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> --<span class="keyword">help</span></span><br><span class="line">Usage: <span class="keyword">cat</span> [OPTION]... [FILE]...</span><br><span class="line">Concatenate FILE(s), <span class="built_in">or</span> standard <span class="built_in">input</span>, <span class="keyword">to</span> standard output.</span><br><span class="line">  -A, --show-<span class="keyword">all</span>           equivalent <span class="keyword">to</span> -vET</span><br><span class="line">  -<span class="keyword">b</span>, --<span class="keyword">number</span>-nonblank    <span class="keyword">number</span> nonempty output lines</span><br><span class="line">  -<span class="keyword">e</span>                       equivalent <span class="keyword">to</span> -vE</span><br><span class="line">  -E, --show-ends          <span class="keyword">display</span> $ at end of each <span class="built_in">line</span></span><br><span class="line">  -n, --<span class="keyword">number</span>             <span class="keyword">number</span> <span class="keyword">all</span> output lines</span><br><span class="line">  -s, --squeeze-blank      suppress repeated <span class="built_in">empty</span> output lines</span><br><span class="line">  -t                       equivalent <span class="keyword">to</span> -vT</span><br><span class="line">  -T, --show-<span class="keyword">tabs</span>          <span class="keyword">display</span> TAB characters <span class="keyword">as</span> ^I</span><br><span class="line">  -<span class="keyword">u</span>                       (ignored)</span><br><span class="line">  -v, --show-nonprinting   use ^ <span class="built_in">and</span> M- notation, except <span class="keyword">for</span> LFD <span class="built_in">and</span> TAB</span><br><span class="line">      --<span class="keyword">help</span>     <span class="keyword">display</span> this <span class="keyword">help</span> <span class="built_in">and</span> <span class="keyword">exit</span></span><br><span class="line">      --<span class="keyword">version</span>  output <span class="keyword">version</span> information <span class="built_in">and</span> <span class="keyword">exit</span></span><br><span class="line"></span><br><span class="line">With <span class="keyword">no</span> FILE, <span class="built_in">or</span> when FILE <span class="keyword">is</span> -, <span class="keyword">read</span> standard <span class="built_in">input</span>.</span><br><span class="line">Example<span class="variable">s:</span></span><br><span class="line">  <span class="keyword">cat</span> <span class="keyword">f</span> - g  Output <span class="keyword">f</span><span class="string">'s contents, then standard input, then g'</span>s contents.</span><br><span class="line">  <span class="keyword">cat</span>        Copy standard <span class="built_in">input</span> <span class="keyword">to</span> standard output.</span><br><span class="line">Report <span class="keyword">cat</span> bugs <span class="keyword">to</span> bug-coreutils@gnu.org</span><br><span class="line">GNU coreutils home page: &lt;http://www.gnu.org/software/coreutils/&gt;</span><br><span class="line">General <span class="keyword">help</span> using GNU software: &lt;http://www.gnu.org/gethelp/&gt;</span><br><span class="line">For <span class="built_in">complete</span> documentation, run: info coreutils <span class="string">'cat invocation'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>一般而言一个完整的命令是由选项和参数组成的</strong><br>　　<strong>COMMAND [OPTIONS…] [ARGUMENTS…]</strong><br>　　<strong>选项(OPTIONS):</strong>用于启用或关闭命令的某个或某些功能<br>　　　　短选项：-n, 例如：-v, -E  多个短选项可命令使用，例如-v -E,可写作-vE；<br>　　　　长选项：–number，例如：–help, –show-all<br>　　<strong>参数(ARGUMENTS):</strong>命令的作用对象<br>　　　　向命令提供数据；</p>
+<p>我们现在还需要了解一些符号的作用<br>　[]：可选内容<br>　…：表示可以同一内容可以出现多次<br>　&lt;&gt;：必选内容<br>　a|b：二选一或者多选一</p>
+<p>了解了符号的作用,我们就可以得知上述帮助中的意思了</p>
+<hr>
+<h3 id="2、使用手册-manual-来获取帮助"><a href="#2、使用手册-manual-来获取帮助" class="headerlink" title="2、使用手册(manual)来获取帮助"></a>2、使用手册(manual)来获取帮助</h3><p>man命令其实是调用/usr/share/man/[man1-man8]中的对应命令的手册,再解压到临时目录,然后使用less来进行显示</p>
+<p>man命令有不同章节来实现对于手册页进行分类<br>man1:用户命令<br>man2:系统调用<br>man3:C库调用<br>man4:设备文件及特殊文件<br>man5:配置文件格式<br>man6:游戏<br>man7:杂项<br>man8:管理类的命令</p>
+<p><strong>注意:</strong>有些命令在不止一个章节中存在帮助手册，可以使用whatis COMMAND来查看命令在哪些章节有帮助手册<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看指定章节中的手册：<span class="keyword">man</span> # COMMAND</span><br><span class="line"><span class="keyword">man</span>命令的配置文件：/etc/<span class="keyword">man</span>.config</span><br><span class="line">MANPATH /PATH/TO/SOMEWHERE:指明新的手册文件搜索位置</span><br><span class="line"><span class="keyword">man</span> -<span class="keyword">M</span> /PATH/TO/SOMEWHERE COMMAND: 到指定位置下搜索COMMAND命令的手册页并显示之</span><br></pre></td></tr></table></figure></p>
+<p>帮助手册中一般遵循相关格式进行编写,这里简要的说明一下相关段落及作用<br><strong>NAME:</strong>简要的说明命令的名称和作用<br><strong>SYSNOPSIS:</strong>命令的简要使用帮助<br><strong>DESCRIPTION:</strong>一些参数或选项的简要说明<br><strong>OPTIONS:</strong>选项<br><strong>AUTHOR:</strong>作者<br><strong>REPORTING BUGS:</strong>提供BUG的地址</p>
+<p>注：手册通过使用less显示<br><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">手册页的操作方法：</span><br><span class="line">	Space, <span class="symbol">^V</span>, <span class="symbol">^f</span>, <span class="symbol">^F</span>: 向文件尾翻屏；</span><br><span class="line">	b, <span class="symbol">^B</span>: 向文件首部翻屏；</span><br><span class="line">	<span class="keyword">d</span>, <span class="symbol">^D</span>: 向文件尾部翻半屏；</span><br><span class="line">	u, <span class="symbol">^U</span>: 向文件首部翻半屏；</span><br><span class="line">	<span class="keyword">RETURN</span>, <span class="symbol">^N</span>, e, <span class="symbol">^E</span> or <span class="keyword">j</span> or <span class="symbol">^J</span>: 向文件尾部翻一行；</span><br><span class="line">	y or <span class="symbol">^Y</span> or <span class="symbol">^P</span> or <span class="keyword">k</span> or <span class="symbol">^K</span>：向文件首部翻一行；</span><br><span class="line">	<span class="keyword">q</span>: 退出；</span><br><span class="line">	#：跳转至第#行；</span><br><span class="line">	<span class="number">1</span>G: 回到文件首部</span><br><span class="line">	G：翻至文件尾部</span><br><span class="line">文本搜索：</span><br><span class="line">    /KEYWORD:以KEYWORD指定的字符串为关键字，从当前位置向文件尾部搜索；不区分字符大小写；</span><br><span class="line">		 n: 下一个</span><br><span class="line">		 N：上一个</span><br><span class="line">    ?KEYWORD:以KEYWORD指定的字符串为关键字，从当前位置向文件首部搜索；不区分字符大小写；</span><br><span class="line">		 n: 跟搜索命令同方向，下一个</span><br><span class="line">		 N：跟搜索命令反方向，上一个</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="3、使用info命令获取帮助"><a href="#3、使用info命令获取帮助" class="headerlink" title="3、使用info命令获取帮助"></a>3、使用info命令获取帮助</h3><p>就内容来说，info页面比man page编写得要更好、更容易理解，也更友好，但man page使用起来确实要更容易得多。一个man page只有一页，而info页面几乎总是将它们的内容组织成多个区段（称为节点），每个区段也可能包含子区段（称为子节点）。理解这个命令的窍门就是不仅要学习如何在单独的Info页面中浏览导航，还要学习如何在节点和子节点之间切换。可能刚开始会一时很难在info页面的节点之间移动和找到你要的东西，真是具有讽刺意味：原本以为对于新手来说，某个东西比man命令会更好些，但实际上学习和使用起来更困难。<br>详细使用方法可查阅: <a href="http://man.linuxde.net/info" target="_blank" rel="external">http://man.linuxde.net/info</a></p>
+<p><strong>注意：仅在man手册无法获取到足够信息，或想了解程序的开发历史时才使用info</strong></p>
+<hr>
+<h3 id="4、查看软件自带的帮助文档"><a href="#4、查看软件自带的帮助文档" class="headerlink" title="4、查看软件自带的帮助文档"></a>4、查看软件自带的帮助文档</h3><p>软件自带的帮助文档一般存储在/usr/share/doc/Software-Version/ 中<br>ChangeLog: 程序版本升级的变动情况<br>INSTALL: 安装方法说明<br>README：程序说明信息</p>
+<hr>
+<h3 id="5、查看软件官方的帮助文档"><a href="#5、查看软件官方的帮助文档" class="headerlink" title="5、查看软件官方的帮助文档"></a>5、查看软件官方的帮助文档</h3><p>查看软件官方站点公布的软件文档</p>
+<hr>
+<h3 id="6、查看Linux发行版的官方文档"><a href="#6、查看Linux发行版的官方文档" class="headerlink" title="6、查看Linux发行版的官方文档"></a>6、查看Linux发行版的官方文档</h3><p>红帽官方文档：<a href="http://www.redhat.com/docs" target="_blank" rel="external">http://www.redhat.com/docs</a><br>Ubuntu社区文档<a href="http://community.ubuntu.com/contribute/documentation/" target="_blank" rel="external">http://community.ubuntu.com/contribute/documentation/</a> </p>
+<hr>
+<h3 id="7、使用搜索引擎获取帮助信息"><a href="#7、使用搜索引擎获取帮助信息" class="headerlink" title="7、使用搜索引擎获取帮助信息"></a>7、使用搜索引擎获取帮助信息</h3><p>良好的使用谷歌、百度等搜索引擎快速便捷的获取帮助信息<br>附：<a href="https://www.zhihu.com/question/20161362" target="_blank" rel="external">知乎:如何用好Google等搜索引擎?</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+            <a href="/tags/man/" rel="tag">#man</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/28/Linux文本搜索工具grep/" rel="prev" title="Linux文本搜索工具grep">
+                Linux文本搜索工具grep <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="gzwzh1994" />
+          <p class="site-author-name" itemprop="name">gzwzh1994</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gzwzh1994" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我们有一下几种主要的帮助获取方式："><span class="nav-number">1.</span> <span class="nav-text">我们有一下几种主要的帮助获取方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、如何使用命令内建的选项来获取帮助"><span class="nav-number">1.1.</span> <span class="nav-text">1、如何使用命令内建的选项来获取帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用手册-manual-来获取帮助"><span class="nav-number">1.2.</span> <span class="nav-text">2、使用手册(manual)来获取帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、使用info命令获取帮助"><span class="nav-number">1.3.</span> <span class="nav-text">3、使用info命令获取帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、查看软件自带的帮助文档"><span class="nav-number">1.4.</span> <span class="nav-text">4、查看软件自带的帮助文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、查看软件官方的帮助文档"><span class="nav-number">1.5.</span> <span class="nav-text">5、查看软件官方的帮助文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、查看Linux发行版的官方文档"><span class="nav-number">1.6.</span> <span class="nav-text">6、查看Linux发行版的官方文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、使用搜索引擎获取帮助信息"><span class="nav-number">1.7.</span> <span class="nav-text">7、使用搜索引擎获取帮助信息</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gzwzh1994</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FxOjsFAHfwe9GUQwgokVUUhx-gzGzoHsz", "uVlSnORqlDd8QQft8fqqv5zK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

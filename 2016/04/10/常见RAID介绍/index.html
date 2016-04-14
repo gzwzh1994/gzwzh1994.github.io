@@ -1,10 +1,940 @@
-<!doctype html><html class="theme-next mist use-motion"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css"><meta name="keywords" content="Linux,RAID,软件RAID,mdadm,"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1"><meta name="description" content="RAID简介
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,RAID,软件RAID,mdadm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="RAID简介
 独立硬盘冗余阵列（RAID, Redundant Array of Independent Disks），旧称廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），简称磁盘阵列。主要目的是把多块硬盘组合起来提高数据处理能力、容错功能等
 
-根据实现方式分为硬件和软件两种　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能"><meta property="og:type" content="article"><meta property="og:title" content="常见RAID介绍"><meta property="og:url" content="http://yoursite.com/2016/04/10/常见RAID介绍/index.html"><meta property="og:site_name" content="gzwzh1994的博客"><meta property="og:description" content="RAID简介
+根据实现方式分为硬件和软件两种　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见RAID介绍">
+<meta property="og:url" content="http://yoursite.com/2016/04/10/常见RAID介绍/index.html">
+<meta property="og:site_name" content="gzwzh1994的博客">
+<meta property="og:description" content="RAID简介
 独立硬盘冗余阵列（RAID, Redundant Array of Independent Disks），旧称廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），简称磁盘阵列。主要目的是把多块硬盘组合起来提高数据处理能力、容错功能等
 
-根据实现方式分为硬件和软件两种　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/btolkmtq9ehih9gowth8kl82/325px-RAID_0.svg.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/qmcvqc9quylvt8ytrsi95z6q/325px-RAID_1.svg.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/3axue1ptgx9nlb3ng79k0lpq/675px-RAID_4.svg.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/e69312ajudsau2wl8zu1dub3/675px-RAID_5.svg.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/ozvi97dq2p64rb94mho3kty2/850px-RAID_6.svg.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/2z52k94efiwkwo56z5mjgi8p/1000px-RAID_10.svg.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/h8tfbv3a08082nb777i65d9g/1000px-RAID_01.svg.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/8wabqo6be1p1lhm0wvs6us08/RAID_50.png"><meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/iuwfzotvb9st0qz65p6485sh/500px-JBOD.svg.png"><meta property="og:updated_time" content="2016-04-13T13:28:00.000Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="常见RAID介绍"><meta name="twitter:description" content="RAID简介
+根据实现方式分为硬件和软件两种　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/btolkmtq9ehih9gowth8kl82/325px-RAID_0.svg.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/qmcvqc9quylvt8ytrsi95z6q/325px-RAID_1.svg.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/3axue1ptgx9nlb3ng79k0lpq/675px-RAID_4.svg.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/e69312ajudsau2wl8zu1dub3/675px-RAID_5.svg.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/ozvi97dq2p64rb94mho3kty2/850px-RAID_6.svg.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/2z52k94efiwkwo56z5mjgi8p/1000px-RAID_10.svg.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/h8tfbv3a08082nb777i65d9g/1000px-RAID_01.svg.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/8wabqo6be1p1lhm0wvs6us08/RAID_50.png">
+<meta property="og:image" content="http://static.zybuluo.com/gzwzh1994/iuwfzotvb9st0qz65p6485sh/500px-JBOD.svg.png">
+<meta property="og:updated_time" content="2016-04-13T13:28:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见RAID介绍">
+<meta name="twitter:description" content="RAID简介
 独立硬盘冗余阵列（RAID, Redundant Array of Independent Disks），旧称廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），简称磁盘阵列。主要目的是把多块硬盘组合起来提高数据处理能力、容错功能等
 
-根据实现方式分为硬件和软件两种　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能"><meta name="twitter:image" content="http://static.zybuluo.com/gzwzh1994/btolkmtq9ehih9gowth8kl82/325px-RAID_0.svg.png"><script type="text/javascript" id="hexo.configuration">var NexT=window.NexT||{},CONFIG={scheme:"Mist",sidebar:{position:"left",display:"hide"},fancybox:!0,motion:!0,duoshuo:{userId:0,author:"博主"}}</script><title> 常见RAID介绍 | gzwzh1994的博客</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="//hm.baidu.com/hm.js?a8b1db5a4a7afe6d407861a40952d9ae";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)}()</script><div class="container one-collumn sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">gzwzh1994的博客</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-home fa-fw"></i><br> 首页</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-th fa-fw"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-archive fa-fw"></i><br> 归档</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-tags fa-fw"></i><br> 标签</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><header class="post-header"><h1 class="post-title" itemprop="name headline"> 常见RAID介绍</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time itemprop="dateCreated" datetime="2016-04-10T15:44:00+08:00" content="2016-04-10">2016-04-10</time></span> <span class="post-category">&nbsp; | &nbsp;<span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span></span> <span id="/2016/04/10/常见RAID介绍/" class="leancloud_visitors" data-flag-title="常见RAID介绍">&nbsp; | &nbsp;<span class="post-meta-item-icon"><i class="fa fa-eye"></i></span> <span class="post-meta-item-text">阅读次数</span><span class="leancloud-visitors-count"></span></span></div></header><div class="post-body" itemprop="articleBody"><h2 id="RAID简介"><a href="#RAID简介" class="headerlink" title="RAID简介"></a>RAID简介</h2><blockquote><p>独立硬盘冗余阵列（RAID, Redundant Array of Independent Disks），旧称廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），简称磁盘阵列。主要目的是把多块硬盘组合起来提高数据处理能力、容错功能等</p></blockquote><p>根据实现方式分为硬件和软件两种<br>　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能<br>　软件RAID：通过软件模拟实现RAID功能<br><strong>注</strong>：软件RAID不建议在生产环境使用，作为学习了解RAID的一种方式。<br><a id="more"></a></p><hr><h2 id="常见RAID级别"><a href="#常见RAID级别" class="headerlink" title="常见RAID级别"></a>常见RAID级别</h2><ul><li><strong>RAID 0</strong></li></ul><blockquote><p>RAID 0亦称为条带卷。它将两块以上的硬盘并联起来，成为一个大容量的硬盘。数据会分割成多个数据块(chunk)平均分散存储到硬盘上，因此读写能力提升，但不具备冗余和容错功能，一块硬盘损坏，所有数据丢失。</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/btolkmtq9ehih9gowth8kl82/325px-RAID_0.svg.png" alt=""></p><ul><li><strong>RAID 1</strong></li></ul><blockquote><p>RAID 1亦称为镜像卷。它由两块或多块硬盘相互组成镜像。比如两块硬盘组RAID 1 数据会在两块硬盘都保存一份，使得硬盘读性能提升但写性能略有下降，具备冗余和容错功能。</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/qmcvqc9quylvt8ytrsi95z6q/325px-RAID_1.svg.png" alt=""></p><ul><li><strong>RAID 4</strong></li></ul><blockquote><p>RAID 4是由3块或3块以上硬盘组成，其中一块硬盘作为校验盘存储校验码，使其具备容错能力允许损坏一块硬盘，其可通过异或运算还原数据。在读写操作时校验盘相比其它盘的负载压力大，更易损坏。</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/3axue1ptgx9nlb3ng79k0lpq/675px-RAID_4.svg.png" alt=""></p><ul><li><strong>RAID 5</strong></li></ul><blockquote><p>RAID 5可以理解为RAID 4的升级版，相比于RAID 4其将校验码分散存储在各个盘上，使得负载均衡，整体性能提升，并且提供了一块硬盘的冗余。</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/e69312ajudsau2wl8zu1dub3/675px-RAID_5.svg.png" alt=""></p><ul><li><strong>RAID 6</strong></li></ul><blockquote><p>相比于RAID 5增加一个校验系统，提供了两块硬盘的冗余。根据其设计硬盘数至少4块.</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/ozvi97dq2p64rb94mho3kty2/850px-RAID_6.svg.png" alt="850px-RAID_6.svg.png-41.6kB"></p><p>###混合类型</p><ul><li><strong>RAID 10</strong></li></ul><blockquote><p>RAID 10是将所有硬盘先组成N组RAID 1，然后再组成RAID 0。最高可支持半数硬盘损坏而不丢失数据。</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/2z52k94efiwkwo56z5mjgi8p/1000px-RAID_10.svg.png" alt=""></p><ul><li><strong>RAID 01</strong></li></ul><blockquote><p>RAID 10是将所有硬盘先组成N组RAID 0，然后再组成RAID 1。当有一块硬盘损坏，其同组RAID 0的其它硬盘都会停止工作。运气不好可能损坏两块硬盘就导致所有数据丢失。</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/h8tfbv3a08082nb777i65d9g/1000px-RAID_01.svg.png" alt=""></p><ul><li><strong>RAID 50</strong></li></ul><blockquote><p>RAID 5与RAID 0的组合，先作RAID 5，再作RAID 0。至少需要6块硬盘，最多只能坏一块硬盘。</p></blockquote><p> <img src="http://static.zybuluo.com/gzwzh1994/8wabqo6be1p1lhm0wvs6us08/RAID_50.png" alt=""></p><ul><li><strong>JBOD(Just a Bunch Of Disks)</strong></li></ul><blockquote><p>主要功能是将多块硬盘的空间合并成一个大的连续空间使用。</p></blockquote><p><img src="http://static.zybuluo.com/gzwzh1994/iuwfzotvb9st0qz65p6485sh/500px-JBOD.svg.png" alt=""></p><blockquote><p><strong>注</strong>：以上图片转自维基百科</p></blockquote><h3 id="总结和对比"><a href="#总结和对比" class="headerlink" title="总结和对比"></a>总结和对比</h3><table><thead><tr><th style="text-align:center">RAID级别</th><th style="text-align:center">读取性能</th><th style="text-align:center">写入性能</th><th style="text-align:center">可用空间</th><th style="text-align:center">最大容错</th><th style="text-align:center">极端情况</th><th style="text-align:center">最少硬盘</th></tr></thead><tbody><tr><td style="text-align:center">单一硬盘(参考)</td><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center">RAID 0</td><td style="text-align:center">N</td><td style="text-align:center">N</td><td style="text-align:center">N*min(S1…Sn)</td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center">2</td></tr><tr><td style="text-align:center">RAID 1</td><td style="text-align:center">N</td><td style="text-align:center">略有下降</td><td style="text-align:center">1*min(S1…Sn)</td><td style="text-align:center">N-1</td><td style="text-align:center">N</td><td style="text-align:center">2</td></tr><tr><td style="text-align:center">RAID 4</td><td style="text-align:center">提高</td><td style="text-align:center">提高</td><td style="text-align:center">(N-1)*min(S1…Sn)</td><td style="text-align:center">1</td><td style="text-align:center">2</td><td style="text-align:center">3</td></tr><tr><td style="text-align:center">RAID 5</td><td style="text-align:center">N-1</td><td style="text-align:center">N-1</td><td style="text-align:center">(N-1)*min(S1…Sn)</td><td style="text-align:center">1</td><td style="text-align:center">2</td><td style="text-align:center">3</td></tr><tr><td style="text-align:center">RAID 6</td><td style="text-align:center">N-2</td><td style="text-align:center">N-2</td><td style="text-align:center">(N-2)*min(S1…Sn)</td><td style="text-align:center">2</td><td style="text-align:center">3</td><td style="text-align:center">4</td></tr><tr><td style="text-align:center">RAID 10</td><td style="text-align:center">N</td><td style="text-align:center">M</td><td style="text-align:center">M*min(S1…SN)</td><td style="text-align:center">N-M</td><td style="text-align:center">N/M</td><td style="text-align:center">4</td></tr><tr><td style="text-align:center">RAID 01</td><td style="text-align:center">N</td><td style="text-align:center">N/M</td><td style="text-align:center">N*min(S1…SN)/M</td><td style="text-align:center">N*(M-1)</td><td style="text-align:center">M</td><td style="text-align:center">4</td></tr><tr><td style="text-align:center">JBOD</td><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center">容量之和</td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center">2</td></tr></tbody></table><blockquote><p>注：<br>N表示硬盘数<br>min(S1…Sn)表示最小硬盘容量<br>RAID 10中M表示RAID 1的组数，RAID 01中M表示RAID 0的组数<br>极端情况表示最少几块硬盘损坏就会导致数据丢失</p></blockquote><hr><h2 id="CentOS-6上的软件RAID的实现"><a href="#CentOS-6上的软件RAID的实现" class="headerlink" title="CentOS 6上的软件RAID的实现"></a>CentOS 6上的软件RAID的实现</h2><blockquote><p>在CentOS 6中使用mdadm工具与内核中的md(multi devices)模块通信完成创建管理软RAID</p></blockquote><ul><li>mdadm简介</li></ul><blockquote><p>命令的语法格式：<code>mdadm [mode] &lt;raiddevice&gt; [options] &lt;component-devices&gt;</code><br>支持的RAID级别：LINEAR, RAID0, RAID1, RAID4, RAID5, RAID6, RAID10</p><p>模式：<br>创建模式：-C<br>装配模式：-A<br>监控模式：-F<br>管理模式：-f,-r,-a</p><p><raiddevice>: /dev/md#</raiddevice></p><p><component-devices>: 任意块设备</component-devices></p><p><strong>-C</strong>：创建模式<br>-n #：使用#个块设备来创建此RAID<br>-l #：指明要创建的RAID的级别<br>-a {yes|no}：自动创建目标RAID设备的设备文件<br>-c CHUNK_SIZE：指明块大小<br>-x #：指明空闲盘的个数</p><p><strong>-D</strong>：显示raid的详细信息<br><code>mdadm -D /dev/md#</code></p><p>管理模式：<br><strong>-f</strong>：标记指定磁盘为损坏<br><strong>-a</strong>：添加磁盘<br><strong>-r</strong>：移除磁盘</p><p>观察md的状态：<code>cat /proc/mdstat</code><br>停止md设备：<code>mdadm -S /dev/md#</code></p></blockquote><h3 id="软件RAID实现过程"><a href="#软件RAID实现过程" class="headerlink" title="软件RAID实现过程"></a>软件RAID实现过程</h3><blockquote><p><strong>实验目标</strong>：创建一个可用空间为10G的RAID 1设备，要求其chunk大小为128k，文件系统为ext4，有一个空闲盘，开机可自动挂载至/backup目录</p></blockquote><ul><li>系统环境</li></ul><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">操作系统：CentOS <span class="number">6</span>.<span class="number">7</span></span><br><span class="line">磁盘信息：</span><br><span class="line"><span class="symbol">Disk</span> /dev/sda: <span class="number">128</span>.<span class="number">8</span> GB, <span class="number">128849018880</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="number">255</span> heads, <span class="number">63</span> sectors/track, <span class="number">15665</span> cylinders</span><br><span class="line"><span class="symbol">Units</span> = cylinders of <span class="number">16065</span> * <span class="number">512</span> = <span class="number">8225280</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Sector</span> size (logical/physical): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span>I/O size (minimum/optimal): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Disk</span> identifier: <span class="number">0x00013624</span></span><br><span class="line"></span><br><span class="line">   Device <span class="keyword">Boot </span>     Start         <span class="meta">End</span>      <span class="keyword">Blocks </span>  Id  System</span><br><span class="line">/dev/sda1   *           <span class="number">1</span>          <span class="number">64</span>      <span class="number">512000</span>   <span class="number">83</span>  Linux</span><br><span class="line"><span class="symbol">Partition</span> <span class="number">1</span> does not <span class="meta">end</span> on cylinder <span class="keyword">boundary.</span><br><span class="line"></span>/dev/sda2              <span class="number">64</span>       <span class="number">15666</span>   <span class="number">125316096</span>   <span class="number">8</span>e  Linux LVM</span><br><span class="line"></span><br><span class="line"><span class="symbol">Disk</span> /dev/sdb: <span class="number">35</span>.<span class="number">4</span> GB, <span class="number">35433480192</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="number">255</span> heads, <span class="number">63</span> sectors/track, <span class="number">4307</span> cylinders</span><br><span class="line"><span class="symbol">Units</span> = cylinders of <span class="number">16065</span> * <span class="number">512</span> = <span class="number">8225280</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Sector</span> size (logical/physical): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span>I/O size (minimum/optimal): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Disk</span> identifier: <span class="number">0x00000000</span></span><br></pre></td></tr></table></figure><p><strong>注</strong>：为了简便实验操作将对sdb进行分区，在此基础上创建RAID。</p><ul><li>磁盘分区</li></ul><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">[<span class="name">root@centos6</span> ~]# fdisk /dev/sdb</span><br><span class="line">Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel</span><br><span class="line">Building a new DOS disklabel with disk identifier <span class="number">0</span>x3610f0c2.</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">After that, of course, the previous content won<span class="symbol">'t</span> be recoverable.</span><br><span class="line"></span><br><span class="line">Warning: invalid flag <span class="number">0</span>x0000 of partition table <span class="number">4</span> will be corrected by w(<span class="name">rite</span>)</span><br><span class="line"></span><br><span class="line">WARNING: DOS-compatible mode is deprecated. It<span class="symbol">'s</span> strongly recommended to</span><br><span class="line">         switch off the mode (<span class="name">command</span> <span class="symbol">'c</span>') and change display units to</span><br><span class="line">         sectors (<span class="name">command</span> <span class="symbol">'u</span>').</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): n</span><br><span class="line">Command action</span><br><span class="line">   e   extended</span><br><span class="line">   p   primary partition (<span class="name">1-4</span>)</span><br><span class="line">p</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">1</span></span><br><span class="line">First cylinder (<span class="name">1-4307</span>, default <span class="number">1</span>): </span><br><span class="line">Using default value <span class="number">1</span></span><br><span class="line">Last cylinder, +cylinders or +size&#123;K,M,G&#125; (<span class="name">1-4307</span>, default <span class="number">4307</span>): <span class="number">+10</span>G</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): n</span><br><span class="line">Command action</span><br><span class="line">   e   extended</span><br><span class="line">   p   primary partition (<span class="name">1-4</span>)</span><br><span class="line">p</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">2</span></span><br><span class="line">First cylinder (<span class="name">1307-4307</span>, default <span class="number">1307</span>): </span><br><span class="line">Using default value <span class="number">1307</span></span><br><span class="line">Last cylinder, +cylinders or +size&#123;K,M,G&#125; (<span class="name">1307-4307</span>, default <span class="number">4307</span>): <span class="number">+10</span>G</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): n</span><br><span class="line">Command action</span><br><span class="line">   e   extended</span><br><span class="line">   p   primary partition (<span class="name">1-4</span>)</span><br><span class="line">p</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">3</span></span><br><span class="line">First cylinder (<span class="name">2613-4307</span>, default <span class="number">2613</span>): </span><br><span class="line">Using default value <span class="number">2613</span></span><br><span class="line">Last cylinder, +cylinders or +size&#123;K,M,G&#125; (<span class="name">2613-4307</span>, default <span class="number">4307</span>): <span class="number">+10</span>G</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): t  </span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">1</span></span><br><span class="line">Hex code (<span class="name">type</span> L to list codes): fd  #避免问题发生软RAID一定要调整分区类型为Linux raid auto(<span class="name">即id为fd</span>)</span><br><span class="line">Changed system type of partition <span class="number">1</span> to fd (<span class="name">Linux</span> raid autodetect)</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): t</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">2</span></span><br><span class="line">Hex code (<span class="name">type</span> L to list codes): fd</span><br><span class="line">Changed system type of partition <span class="number">2</span> to fd (<span class="name">Linux</span> raid autodetect)</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): t</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">3</span></span><br><span class="line">Hex code (<span class="name">type</span> L to list codes): fd</span><br><span class="line">Changed system type of partition <span class="number">3</span> to fd (<span class="name">Linux</span> raid autodetect)</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): w</span><br><span class="line">The partition table has been altered!</span><br><span class="line"></span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line">Syncing disks.</span><br></pre></td></tr></table></figure><p>通知内核重读分区表<br></p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># partx -a /dev/sdb</span></span><br><span class="line"><span class="keyword">BLKPG: </span>Device <span class="keyword">or </span>resource <span class="keyword">busy</span><br><span class="line"></span>error <span class="keyword">adding </span>partition <span class="number">1</span></span><br><span class="line"><span class="keyword">BLKPG: </span>Device <span class="keyword">or </span>resource <span class="keyword">busy</span><br><span class="line"></span>error <span class="keyword">adding </span>partition <span class="number">2</span></span><br><span class="line"><span class="keyword">BLKPG: </span>Device <span class="keyword">or </span>resource <span class="keyword">busy</span><br><span class="line"></span>error <span class="keyword">adding </span>partition <span class="number">3</span></span><br></pre></td></tr></table></figure><p></p><ul><li>RAID设备创建</li></ul><p>使用mdadm工具创建RAID 1，chunk为128k，有一个空闲盘<br></p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># mdadm -C /dev/md0 -a yes -n 2 -x 1 -c 128 -l 1 /dev/sdb&#123;1,2,3&#125;</span></span><br><span class="line">mdadm: Note: this<span class="built_in"> array </span>has metadata at the start<span class="built_in"> and</span><br><span class="line"></span>    may<span class="built_in"> not </span>be suitable as a boot device.  If you plan to</span><br><span class="line">    store '/boot' on this device please ensure that</span><br><span class="line">    your boot-loader understands md/v1.x metadata,<span class="built_in"> or </span>use</span><br><span class="line">    --metadata=0.90</span><br><span class="line">Continue creating array? y</span><br><span class="line">mdadm: Defaulting to version 1.2 metadata</span><br><span class="line">mdadm:<span class="built_in"> array </span>/dev/md0 started.</span><br></pre></td></tr></table></figure><p></p><p>查看md的状态<br></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# cat /proc/mdstat  #同步中</span><br><span class="line">Personalities : [raid1] </span><br><span class="line">md0 : active raid1 sdb3[<span class="string">2</span>](<span class="link">S</span>) sdb2[1] sdb1[0]</span><br><span class="line"><span class="code">      10482176 blocks super 1.2 [2/2] [UU]</span></span><br><span class="line"><span class="code">      [===&gt;.................]  resync = 18.9% (1989376/10482176) finish=0.6min speed=221041K/sec</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">unused devices: <span class="xml"><span class="tag">&lt;<span class="name">none</span>&gt;</span></span></span><br><span class="line">[root@centos6 ~]# cat /proc/mdstat  #同步完成</span><br><span class="line">Personalities : [raid1] </span><br><span class="line">md0 : active raid1 sdb3[<span class="string">2</span>](<span class="link">S</span>) sdb2[1] sdb1[0]</span><br><span class="line"><span class="code">      10482176 blocks super 1.2 [2/2] [UU]</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">unused devices: <span class="xml"><span class="tag">&lt;<span class="name">none</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p></p><p>查看创建的RAID设备的详细信息<br></p><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@centos6 ~]</span># <span class="selector-tag">mdadm</span> <span class="selector-tag">-D</span> /<span class="selector-tag">dev</span>/<span class="selector-tag">md0</span></span><br><span class="line">/<span class="selector-tag">dev</span>/<span class="selector-tag">md0</span>:</span><br><span class="line">        <span class="selector-tag">Version</span> : <span class="selector-tag">1</span><span class="selector-class">.2</span></span><br><span class="line">  <span class="selector-tag">Creation</span> <span class="selector-tag">Time</span> : <span class="selector-tag">Mon</span> <span class="selector-tag">Apr</span> <span class="selector-tag">11</span> <span class="selector-tag">20</span><span class="selector-pseudo">:17</span><span class="selector-pseudo">:28</span> <span class="selector-tag">2016</span></span><br><span class="line">     <span class="selector-tag">Raid</span> <span class="selector-tag">Level</span> : <span class="selector-tag">raid1</span></span><br><span class="line">     <span class="selector-tag">Array</span> <span class="selector-tag">Size</span> : <span class="selector-tag">10482176</span> (<span class="number">10.00</span> GiB <span class="number">10.73</span> GB)</span><br><span class="line">  <span class="selector-tag">Used</span> <span class="selector-tag">Dev</span> <span class="selector-tag">Size</span> : <span class="selector-tag">10482176</span> (<span class="number">10.00</span> GiB <span class="number">10.73</span> GB)</span><br><span class="line">   <span class="selector-tag">Raid</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">2</span></span><br><span class="line">  <span class="selector-tag">Total</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">3</span></span><br><span class="line">    <span class="selector-tag">Persistence</span> : <span class="selector-tag">Superblock</span> <span class="selector-tag">is</span> <span class="selector-tag">persistent</span></span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">Update</span> <span class="selector-tag">Time</span> : <span class="selector-tag">Mon</span> <span class="selector-tag">Apr</span> <span class="selector-tag">11</span> <span class="selector-tag">20</span><span class="selector-pseudo">:18</span><span class="selector-pseudo">:20</span> <span class="selector-tag">2016</span></span><br><span class="line">          <span class="selector-tag">State</span> : <span class="selector-tag">clean</span> </span><br><span class="line"> <span class="selector-tag">Active</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">2</span></span><br><span class="line"><span class="selector-tag">Working</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">3</span></span><br><span class="line"> <span class="selector-tag">Failed</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">0</span></span><br><span class="line">  <span class="selector-tag">Spare</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">1</span></span><br><span class="line"></span><br><span class="line">           <span class="selector-tag">Name</span> : <span class="selector-tag">centos6</span><span class="selector-class">.7</span><span class="selector-pseudo">:0</span>  (local to host centos6.<span class="number">7</span>)</span><br><span class="line">           <span class="selector-tag">UUID</span> : <span class="selector-tag">5a709c74</span><span class="selector-pseudo">:6b893df0</span><span class="selector-pseudo">:83f19941</span><span class="selector-pseudo">:565699f7</span></span><br><span class="line">         <span class="selector-tag">Events</span> : <span class="selector-tag">17</span></span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">Number</span>   <span class="selector-tag">Major</span>   <span class="selector-tag">Minor</span>   <span class="selector-tag">RaidDevice</span> <span class="selector-tag">State</span></span><br><span class="line">       <span class="selector-tag">0</span>       <span class="selector-tag">8</span>       <span class="selector-tag">17</span>        <span class="selector-tag">0</span>      <span class="selector-tag">active</span> <span class="selector-tag">sync</span>   /<span class="selector-tag">dev</span>/<span class="selector-tag">sdb1</span></span><br><span class="line">       <span class="selector-tag">1</span>       <span class="selector-tag">8</span>       <span class="selector-tag">18</span>        <span class="selector-tag">1</span>      <span class="selector-tag">active</span> <span class="selector-tag">sync</span>   /<span class="selector-tag">dev</span>/<span class="selector-tag">sdb2</span></span><br><span class="line"></span><br><span class="line">       <span class="selector-tag">2</span>       <span class="selector-tag">8</span>       <span class="selector-tag">19</span>        <span class="selector-tag">-</span>      <span class="selector-tag">spare</span>   /<span class="selector-tag">dev</span>/<span class="selector-tag">sdb3</span></span><br></pre></td></tr></table></figure><p></p><p>RAID设备格式化，文件系统为ext4<br></p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># mke2fs -t ext4 /dev/md0</span></span><br><span class="line">mke<span class="number">2f</span>s <span class="number">1</span>.<span class="number">41</span>.<span class="number">12</span> (<span class="number">17</span>-May-2010)</span><br><span class="line">文件系统标签=</span><br><span class="line">操作系统:Linux</span><br><span class="line">块大小=<span class="number">4096</span> (log=<span class="number">2</span>)</span><br><span class="line">分块大小=<span class="number">4096</span> (log=<span class="number">2</span>)</span><br><span class="line">Stride=<span class="number">0</span> <span class="keyword">blocks, </span>Stripe width=<span class="number">0</span> <span class="keyword">blocks</span><br><span class="line"></span><span class="number">655360</span> inodes, <span class="number">2620544</span> <span class="keyword">blocks</span><br><span class="line"></span><span class="number">131027</span> <span class="keyword">blocks </span>(<span class="number">5</span>.<span class="number">00</span>%) reserved for the super user</span><br><span class="line">第一个数据块=<span class="number">0</span></span><br><span class="line">Maximum filesystem <span class="keyword">blocks=2684354560</span><br><span class="line"></span><span class="number">80</span> <span class="keyword">block </span>groups</span><br><span class="line"><span class="number">32768</span> <span class="keyword">blocks </span>per group, <span class="number">32768</span> fragments per group</span><br><span class="line"><span class="number">8192</span> inodes per group</span><br><span class="line">Superblock <span class="keyword">backups </span>stored on <span class="keyword">blocks: </span></span><br><span class="line">	<span class="number">32768</span>, <span class="number">98304</span>, <span class="number">163840</span>, <span class="number">229376</span>, <span class="number">294912</span>, <span class="number">819200</span>, <span class="number">884736</span>, <span class="number">1605632</span></span><br><span class="line"></span><br><span class="line">正在写入inode表: 完成                            </span><br><span class="line">Creating <span class="keyword">journal </span>(<span class="number">32768</span> <span class="keyword">blocks): </span>完成</span><br><span class="line">Writing superblocks <span class="keyword">and </span>filesystem accounting information: 完成</span><br><span class="line"></span><br><span class="line">This filesystem will <span class="keyword">be </span>automatically checked every <span class="number">31</span> mounts <span class="keyword">or</span><br><span class="line"></span><span class="number">180</span> days, whichever comes first.  Use tune<span class="number">2f</span>s -c <span class="keyword">or </span>-i to override.</span><br></pre></td></tr></table></figure><p></p><ul><li>挂载RAID设备</li></ul><p>将RAID设备设置开机可自动挂载至/backup目录<br></p><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># mkdir /backup  #创建/backup目录</span></span><br><span class="line">[root@centos6 ~]<span class="comment"># blkid /dev/md0 #查询设备的UUID，推荐使用UUID格式挂载</span></span><br><span class="line">/dev/md0: UUID=<span class="string">"f57b163a-0bc3-4b21-a388-a1586d84e943"</span> TYPE=<span class="string">"ext4"</span> </span><br><span class="line">[root@centos6 ~]<span class="comment"># vim /etc/fstab</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># /etc/fstab</span></span><br><span class="line"><span class="comment"># Created by anaconda on Fri Mar  4 11:09:09 2016</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Accessible filesystems, by reference, are maintained under '/dev/disk'</span></span><br><span class="line"><span class="comment"># See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="regexp">/dev/mapper/vg_centos6-lv_root /</span>                       ext4    defaults        <span class="number">1</span> <span class="number">1</span></span><br><span class="line">UUID=<span class="number">3</span>efc9d2d-ff60<span class="number">-4491</span><span class="number">-84</span>c4-e1beb6701b83 /boot                   ext4    defaults        <span class="number">1</span> <span class="number">2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_home /home                   ext4    defaults        <span class="number">1</span> <span class="number">2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_swap swap                    swap    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">devpts                  /dev/pts                devpts  gid=<span class="number">5</span>,mode=<span class="number">620</span>  <span class="number">0</span> <span class="number">0</span></span><br><span class="line">sysfs                   /sys                    sysfs   defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">proc                    /proc                   proc    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">UUID=f57b163a<span class="number">-0</span>bc3<span class="number">-4</span>b21-a388-a1586d84e943 /backup ext4 defaults <span class="number">0</span> <span class="number">0</span></span><br><span class="line">[root@centos6 ~]<span class="comment"># mount -a      #挂载支持自动挂载的设备</span></span><br><span class="line">[root@centos6 ~]<span class="comment"># df            #查看是否挂载成功</span></span><br><span class="line">Filesystem           <span class="number">1</span>K-blocks    Used Available Use% Mounted <span class="literal">on</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_root</span><br><span class="line">                      <span class="number">51475068</span> <span class="number">4071360</span>  <span class="number">44782268</span>   <span class="number">9</span>% /</span><br><span class="line">tmpfs                   <span class="number">502384</span>       <span class="number">0</span>    <span class="number">502384</span>   <span class="number">0</span>% /dev/shm</span><br><span class="line">/dev/sda1               <span class="number">487652</span>   <span class="number">37084</span>    <span class="number">424968</span>   <span class="number">9</span>% /boot</span><br><span class="line">/dev/mapper/vg_centos6-lv_home</span><br><span class="line">                      <span class="number">69608928</span>   <span class="number">54412</span>  <span class="number">66011888</span>   <span class="number">1</span>% /home</span><br><span class="line">/dev/md0              <span class="number">10186552</span>   <span class="number">23028</span>   <span class="number">9639416</span>   <span class="number">1</span>% /backup     <span class="comment">#表明挂载成功</span></span><br></pre></td></tr></table></figure><p></p><ul><li>测试</li></ul><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 backup]# ls /backup</span><br><span class="line">lost+found</span><br><span class="line">[root@centos6 backup]#cp /etc/fstab /backup</span><br><span class="line">[root@centos6 ~]# ls /backup</span><br><span class="line">fstab  lost+found</span><br><span class="line">[root@centos6 ~]# mdadm /dev/md0 -f /dev/sdb1  #模拟一块硬盘损坏</span><br><span class="line">mdadm: <span class="keyword">set</span> /dev/sdb1 <span class="comment">faulty in</span> /dev/<span class="comment">md0</span></span><br><span class="line">[root@centos6 ~<span class="comment">]# mdadm -D</span> /dev/<span class="comment">md0  #</span>查看设备信息</span><br><span class="line">/dev/md0:</span><br><span class="line">        Version <span class="comment">: 1.2</span></span><br><span class="line">  Creation <span class="comment">Time : Mon Apr 11 20:17:28 2016</span></span><br><span class="line">     Raid <span class="comment">Level : raid1</span></span><br><span class="line">     Array <span class="comment">Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">  Used <span class="comment">Dev Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">   Raid <span class="comment">Devices : 2</span></span><br><span class="line">  Total <span class="comment">Devices : 3</span></span><br><span class="line">    Persistence <span class="comment">: Superblock is persistent</span></span><br><span class="line"></span><br><span class="line">    Update <span class="comment">Time : Mon Apr 11 21:03:48 2016</span></span><br><span class="line">          State <span class="comment">: clean, degraded, recovering  #</span>处于降级恢复模式</span><br><span class="line"> Active <span class="comment">Devices : 1</span></span><br><span class="line">Working <span class="comment">Devices : 2</span></span><br><span class="line"> Failed <span class="comment">Devices : 1</span></span><br><span class="line">  Spare <span class="comment">Devices : 1</span></span><br><span class="line"></span><br><span class="line"> Rebuild <span class="comment">Status : 43% complete</span></span><br><span class="line"></span><br><span class="line">           Name <span class="comment">: centos6.7:0  (local to host centos6.7)</span></span><br><span class="line">           UUID <span class="comment">: 5a709c74:6b893df0:83f19941:565699f7</span></span><br><span class="line">         Events <span class="comment">: 26</span></span><br><span class="line"></span><br><span class="line">    Number   <span class="comment">Major   Minor   RaidDevice State</span></span><br><span class="line">       2       8       19        0      spare <span class="comment">rebuilding</span>   /dev/<span class="comment">sdb3  #</span>空闲盘替代损坏硬盘，数据重建中</span><br><span class="line">       1       8       18        1      active <span class="comment">sync</span>   /dev/<span class="comment">sdb2</span></span><br><span class="line"></span><br><span class="line">       0       8       17        -      faulty   /dev/<span class="comment">sdb1   #</span>提示该硬盘损坏</span><br><span class="line">[root@centos6 ~<span class="comment">]# mdadm</span> /dev/<span class="comment">md0 -f</span> /dev/<span class="comment">sdb2  #</span>模拟再出现硬盘损坏</span><br><span class="line">mdadm: <span class="keyword">set</span> /dev/<span class="comment">sdb2 faulty in</span> /dev/<span class="comment">md0</span></span><br><span class="line">[root@centos6 ~<span class="comment">]# mdadm -D</span> /dev/<span class="comment">md0</span> </span><br><span class="line">/dev/md0:</span><br><span class="line">        Version <span class="comment">: 1.2</span></span><br><span class="line">  Creation <span class="comment">Time : Mon Apr 11 20:17:28 2016</span></span><br><span class="line">     Raid <span class="comment">Level : raid1</span></span><br><span class="line">     Array <span class="comment">Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">  Used <span class="comment">Dev Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">   Raid <span class="comment">Devices : 2</span></span><br><span class="line">  Total <span class="comment">Devices : 3</span></span><br><span class="line">    Persistence <span class="comment">: Superblock is persistent</span></span><br><span class="line"></span><br><span class="line">    Update <span class="comment">Time : Mon Apr 11 21:10:20 2016</span></span><br><span class="line">          State <span class="comment">: clean, degraded    #</span>处于降级模式</span><br><span class="line"> Active <span class="comment">Devices : 1</span></span><br><span class="line">Working <span class="comment">Devices : 1</span></span><br><span class="line"> Failed <span class="comment">Devices : 2</span></span><br><span class="line">  Spare <span class="comment">Devices : 0</span></span><br><span class="line"></span><br><span class="line">           Name <span class="comment">: centos6.7:0  (local to host centos6.7)</span></span><br><span class="line">           UUID <span class="comment">: 5a709c74:6b893df0:83f19941:565699f7</span></span><br><span class="line">         Events <span class="comment">: 38</span></span><br><span class="line"></span><br><span class="line">    Number   <span class="comment">Major   Minor   RaidDevice State</span></span><br><span class="line">       2       8       19        0      active <span class="comment">sync</span>   /dev/<span class="comment">sdb3</span></span><br><span class="line">       2       0        0        2      removed    <span class="comment">#</span>此处硬盘缺失</span><br><span class="line"></span><br><span class="line">       0       8       17        -      faulty   /dev/<span class="comment">sdb1</span></span><br><span class="line">       1       8       18        -      faulty   /dev/<span class="comment">sdb2</span></span><br><span class="line">[root@centos6 ~<span class="comment">]# cat</span> /backup/<span class="comment">fstab    #</span>数据可正常访问</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># /etc/fstab</span><br><span class="line"># Created <span class="comment">by anaconda on Fri Mar  4 11:09:09 2016</span></span><br><span class="line">#</span><br><span class="line"># Accessible <span class="comment">filesystems, by reference, are maintained under</span> <span class="comment">'/dev/disk'</span></span><br><span class="line"># See <span class="comment">man pages fstab(5), findfs(8), mount(8) and</span>/<span class="keyword">or</span> blkid(<span class="number">8</span>) <span class="keyword">for</span> more info</span><br><span class="line">#</span><br><span class="line">/<span class="comment">dev</span>/mapper/<span class="comment">vg_centos6-lv_root</span> /                       ext4    defaults        <span class="number">1</span> <span class="number">1</span></span><br><span class="line">UUID=<span class="number">3</span>efc9d2d-ff60<span class="number">-4491</span><span class="number">-84</span>c4-e1beb6701b83 /<span class="comment">boot                   ext4    defaults        1 2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_home /home                   <span class="comment">ext4    defaults        1 2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_swap swap                    swap    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">devpts                  /dev/pts                devpts  gid=<span class="number">5</span>,mode=<span class="number">620</span>  <span class="number">0</span> <span class="number">0</span></span><br><span class="line">sysfs                   /sys                    <span class="comment">sysfs   defaults        0 0</span></span><br><span class="line">proc                    /proc                   proc    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">UUID=f57b163a<span class="number">-0</span>bc3<span class="number">-4</span>b21-a388-a1586d84e943 /<span class="comment">backup ext4 defaults 0 0</span></span><br></pre></td></tr></table></figure></div><div></div><div></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/Linux/" rel="tag">#Linux</a> <a href="/tags/RAID/" rel="tag">#RAID</a> <a href="/tags/软件RAID/" rel="tag">#软件RAID</a> <a href="/tags/mdadm/" rel="tag">#mdadm</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2016/04/01/VIM编辑器入门/" rel="next" title="VIM编辑器入门"><i class="fa fa-chevron-left"></i> VIM编辑器入门</a></div><div class="post-nav-prev post-nav-item"></div></div></footer></article><div class="post-spread"></div></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview"> 站点概览</li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="gzwzh1994"><p class="site-author-name" itemprop="name">gzwzh1994</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives"><span class="site-state-item-count">4</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories"><span class="site-state-item-count">1</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags"><span class="site-state-item-count">9</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/gzwzh1994" target="_blank"><i class="fa fa-github"></i> GitHub</a></span></div><div class="links-of-blogroll motion-element"></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAID简介"><span class="nav-number">1.</span> <span class="nav-text">RAID简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见RAID级别"><span class="nav-number">2.</span> <span class="nav-text">常见RAID级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结和对比"><span class="nav-number">2.1.</span> <span class="nav-text">总结和对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-6上的软件RAID的实现"><span class="nav-number">3.</span> <span class="nav-text">CentOS 6上的软件RAID的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件RAID实现过程"><span class="nav-number">3.1.</span> <span class="nav-text">软件RAID实现过程</span></a></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright"> &copy; <span itemprop="copyrightYear">2016</span><span class="with-love"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">gzwzh1994</span></div><div class="powered-by"> 由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动</div><div class="theme-info"> 主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script><script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script><script>AV.initialize("FxOjsFAHfwe9GUQwgokVUUhx-gzGzoHsz","uVlSnORqlDd8QQft8fqqv5zK")</script><script>function showTime(e){var t=new AV.Query(e),n=[],o=$(".leancloud_visitors");o.each(function(){n.push($(this).attr("id").trim())}),t.containedIn("url",n),t.find().done(function(e){var t=".leancloud-visitors-count";if(0===e.length)return void o.find(t).text(0);for(var n=0;n<e.length;n++){var i=e[n],r=i.get("url"),l=i.get("time"),s=document.getElementById(r);$(s).find(t).text(l)}}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(e){var t=$(".leancloud_visitors"),n=t.attr("id").trim(),o=t.attr("data-flag-title").trim(),i=new AV.Query(e);i.equalTo("url",n),i.find({success:function(t){if(t.length>0){var i=t[0];i.fetchWhenSave(!0),i.increment("time"),i.save(null,{success:function(e){var t=$(document.getElementById(n));t.find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var r=new e;r.set("title",o),r.set("url",n),r.set("time",1),r.save(null,{success:function(e){var t=$(document.getElementById(n));t.find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):$(".post-title-link").length>1&&showTime(e)})</script></body></html>
+根据实现方式分为硬件和软件两种　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能">
+<meta name="twitter:image" content="http://static.zybuluo.com/gzwzh1994/btolkmtq9ehih9gowth8kl82/325px-RAID_0.svg.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 常见RAID介绍 | gzwzh1994的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a8b1db5a4a7afe6d407861a40952d9ae";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">gzwzh1994的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                常见RAID介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-10T15:44:00+08:00" content="2016-04-10">
+              2016-04-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/10/常见RAID介绍/" class="leancloud_visitors" data-flag-title="常见RAID介绍">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="RAID简介"><a href="#RAID简介" class="headerlink" title="RAID简介"></a>RAID简介</h2><blockquote>
+<p>独立硬盘冗余阵列（RAID, Redundant Array of Independent Disks），旧称廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），简称磁盘阵列。主要目的是把多块硬盘组合起来提高数据处理能力、容错功能等</p>
+</blockquote>
+<p>根据实现方式分为硬件和软件两种<br>　硬件RAID：通过RAID卡或主板集成的RAID控制器来支持实现RAID功能<br>　软件RAID：通过软件模拟实现RAID功能<br><strong>注</strong>：软件RAID不建议在生产环境使用，作为学习了解RAID的一种方式。<br><a id="more"></a></p>
+<hr>
+<h2 id="常见RAID级别"><a href="#常见RAID级别" class="headerlink" title="常见RAID级别"></a>常见RAID级别</h2><ul>
+<li><strong>RAID 0</strong></li>
+</ul>
+<blockquote>
+<p>RAID 0亦称为条带卷。它将两块以上的硬盘并联起来，成为一个大容量的硬盘。数据会分割成多个数据块(chunk)平均分散存储到硬盘上，因此读写能力提升，但不具备冗余和容错功能，一块硬盘损坏，所有数据丢失。</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/btolkmtq9ehih9gowth8kl82/325px-RAID_0.svg.png" alt=""></p>
+<ul>
+<li><strong>RAID 1</strong></li>
+</ul>
+<blockquote>
+<p>RAID 1亦称为镜像卷。它由两块或多块硬盘相互组成镜像。比如两块硬盘组RAID 1 数据会在两块硬盘都保存一份，使得硬盘读性能提升但写性能略有下降，具备冗余和容错功能。</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/qmcvqc9quylvt8ytrsi95z6q/325px-RAID_1.svg.png" alt=""></p>
+<ul>
+<li><strong>RAID 4</strong></li>
+</ul>
+<blockquote>
+<p>RAID 4是由3块或3块以上硬盘组成，其中一块硬盘作为校验盘存储校验码，使其具备容错能力允许损坏一块硬盘，其可通过异或运算还原数据。在读写操作时校验盘相比其它盘的负载压力大，更易损坏。</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/3axue1ptgx9nlb3ng79k0lpq/675px-RAID_4.svg.png" alt=""></p>
+<ul>
+<li><strong>RAID 5</strong></li>
+</ul>
+<blockquote>
+<p>RAID 5可以理解为RAID 4的升级版，相比于RAID 4其将校验码分散存储在各个盘上，使得负载均衡，整体性能提升，并且提供了一块硬盘的冗余。</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/e69312ajudsau2wl8zu1dub3/675px-RAID_5.svg.png" alt=""></p>
+<ul>
+<li><strong>RAID 6</strong></li>
+</ul>
+<blockquote>
+<p>相比于RAID 5增加一个校验系统，提供了两块硬盘的冗余。根据其设计硬盘数至少4块.</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/ozvi97dq2p64rb94mho3kty2/850px-RAID_6.svg.png" alt="850px-RAID_6.svg.png-41.6kB"></p>
+<p>###混合类型</p>
+<ul>
+<li><strong>RAID 10</strong></li>
+</ul>
+<blockquote>
+<p>RAID 10是将所有硬盘先组成N组RAID 1，然后再组成RAID 0。最高可支持半数硬盘损坏而不丢失数据。</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/2z52k94efiwkwo56z5mjgi8p/1000px-RAID_10.svg.png" alt=""></p>
+<ul>
+<li><strong>RAID 01</strong></li>
+</ul>
+<blockquote>
+<p>RAID 10是将所有硬盘先组成N组RAID 0，然后再组成RAID 1。当有一块硬盘损坏，其同组RAID 0的其它硬盘都会停止工作。运气不好可能损坏两块硬盘就导致所有数据丢失。</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/h8tfbv3a08082nb777i65d9g/1000px-RAID_01.svg.png" alt=""></p>
+<ul>
+<li><strong>RAID 50</strong></li>
+</ul>
+<blockquote>
+<p>RAID 5与RAID 0的组合，先作RAID 5，再作RAID 0。至少需要6块硬盘，最多只能坏一块硬盘。</p>
+</blockquote>
+<p> <img src="http://static.zybuluo.com/gzwzh1994/8wabqo6be1p1lhm0wvs6us08/RAID_50.png" alt=""></p>
+<ul>
+<li><strong>JBOD(Just a Bunch Of Disks)</strong></li>
+</ul>
+<blockquote>
+<p>主要功能是将多块硬盘的空间合并成一个大的连续空间使用。</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/gzwzh1994/iuwfzotvb9st0qz65p6485sh/500px-JBOD.svg.png" alt=""></p>
+<blockquote>
+<p><strong>注</strong>：以上图片转自维基百科</p>
+</blockquote>
+<h3 id="总结和对比"><a href="#总结和对比" class="headerlink" title="总结和对比"></a>总结和对比</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">RAID级别</th>
+<th style="text-align:center">读取性能</th>
+<th style="text-align:center">写入性能</th>
+<th style="text-align:center">可用空间</th>
+<th style="text-align:center">最大容错</th>
+<th style="text-align:center">极端情况</th>
+<th style="text-align:center">最少硬盘</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">单一硬盘(参考)</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 0</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N*min(S1…Sn)</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 1</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">略有下降</td>
+<td style="text-align:center">1*min(S1…Sn)</td>
+<td style="text-align:center">N-1</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 4</td>
+<td style="text-align:center">提高</td>
+<td style="text-align:center">提高</td>
+<td style="text-align:center">(N-1)*min(S1…Sn)</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 5</td>
+<td style="text-align:center">N-1</td>
+<td style="text-align:center">N-1</td>
+<td style="text-align:center">(N-1)*min(S1…Sn)</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 6</td>
+<td style="text-align:center">N-2</td>
+<td style="text-align:center">N-2</td>
+<td style="text-align:center">(N-2)*min(S1…Sn)</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 10</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">M</td>
+<td style="text-align:center">M*min(S1…SN)</td>
+<td style="text-align:center">N-M</td>
+<td style="text-align:center">N/M</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 01</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N/M</td>
+<td style="text-align:center">N*min(S1…SN)/M</td>
+<td style="text-align:center">N*(M-1)</td>
+<td style="text-align:center">M</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">JBOD</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">容量之和</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：<br>N表示硬盘数<br>min(S1…Sn)表示最小硬盘容量<br>RAID 10中M表示RAID 1的组数，RAID 01中M表示RAID 0的组数<br>极端情况表示最少几块硬盘损坏就会导致数据丢失</p>
+</blockquote>
+<hr>
+<h2 id="CentOS-6上的软件RAID的实现"><a href="#CentOS-6上的软件RAID的实现" class="headerlink" title="CentOS 6上的软件RAID的实现"></a>CentOS 6上的软件RAID的实现</h2><blockquote>
+<p>在CentOS 6中使用mdadm工具与内核中的md(multi devices)模块通信完成创建管理软RAID</p>
+</blockquote>
+<ul>
+<li>mdadm简介</li>
+</ul>
+<blockquote>
+<p>命令的语法格式：<code>mdadm [mode] &lt;raiddevice&gt; [options] &lt;component-devices&gt;</code><br>支持的RAID级别：LINEAR, RAID0, RAID1, RAID4, RAID5, RAID6, RAID10</p>
+<p>模式：<br>创建模式：-C<br>装配模式：-A<br>监控模式：-F<br>管理模式：-f,-r,-a</p>
+<p><raiddevice>: /dev/md#</raiddevice></p>
+<p><component-devices>: 任意块设备</component-devices></p>
+<p><strong>-C</strong>：创建模式<br>-n #：使用#个块设备来创建此RAID<br>-l #：指明要创建的RAID的级别<br>-a {yes|no}：自动创建目标RAID设备的设备文件<br>-c CHUNK_SIZE：指明块大小<br>-x #：指明空闲盘的个数</p>
+<p><strong>-D</strong>：显示raid的详细信息<br><code>mdadm -D /dev/md#</code></p>
+<p>管理模式：<br><strong>-f</strong>：标记指定磁盘为损坏<br><strong>-a</strong>：添加磁盘<br><strong>-r</strong>：移除磁盘</p>
+<p>观察md的状态：<code>cat /proc/mdstat</code><br>停止md设备：<code>mdadm -S /dev/md#</code></p>
+</blockquote>
+<h3 id="软件RAID实现过程"><a href="#软件RAID实现过程" class="headerlink" title="软件RAID实现过程"></a>软件RAID实现过程</h3><blockquote>
+<p><strong>实验目标</strong>：创建一个可用空间为10G的RAID 1设备，要求其chunk大小为128k，文件系统为ext4，有一个空闲盘，开机可自动挂载至/backup目录</p>
+</blockquote>
+<ul>
+<li>系统环境</li>
+</ul>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">操作系统：CentOS <span class="number">6</span>.<span class="number">7</span></span><br><span class="line">磁盘信息：</span><br><span class="line"><span class="symbol">Disk</span> /dev/sda: <span class="number">128</span>.<span class="number">8</span> GB, <span class="number">128849018880</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="number">255</span> heads, <span class="number">63</span> sectors/track, <span class="number">15665</span> cylinders</span><br><span class="line"><span class="symbol">Units</span> = cylinders of <span class="number">16065</span> * <span class="number">512</span> = <span class="number">8225280</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Sector</span> size (logical/physical): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span>I/O size (minimum/optimal): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Disk</span> identifier: <span class="number">0x00013624</span></span><br><span class="line"></span><br><span class="line">   Device <span class="keyword">Boot </span>     Start         <span class="meta">End</span>      <span class="keyword">Blocks </span>  Id  System</span><br><span class="line">/dev/sda1   *           <span class="number">1</span>          <span class="number">64</span>      <span class="number">512000</span>   <span class="number">83</span>  Linux</span><br><span class="line"><span class="symbol">Partition</span> <span class="number">1</span> does not <span class="meta">end</span> on cylinder <span class="keyword">boundary.</span><br><span class="line"></span>/dev/sda2              <span class="number">64</span>       <span class="number">15666</span>   <span class="number">125316096</span>   <span class="number">8</span>e  Linux LVM</span><br><span class="line"></span><br><span class="line"><span class="symbol">Disk</span> /dev/sdb: <span class="number">35</span>.<span class="number">4</span> GB, <span class="number">35433480192</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="number">255</span> heads, <span class="number">63</span> sectors/track, <span class="number">4307</span> cylinders</span><br><span class="line"><span class="symbol">Units</span> = cylinders of <span class="number">16065</span> * <span class="number">512</span> = <span class="number">8225280</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Sector</span> size (logical/physical): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span>I/O size (minimum/optimal): <span class="number">512</span> <span class="keyword">bytes </span>/ <span class="number">512</span> <span class="keyword">bytes</span><br><span class="line"></span><span class="symbol">Disk</span> identifier: <span class="number">0x00000000</span></span><br></pre></td></tr></table></figure>
+<p><strong>注</strong>：为了简便实验操作将对sdb进行分区，在此基础上创建RAID。</p>
+<ul>
+<li>磁盘分区</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">[<span class="name">root@centos6</span> ~]# fdisk /dev/sdb</span><br><span class="line">Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel</span><br><span class="line">Building a new DOS disklabel with disk identifier <span class="number">0</span>x3610f0c2.</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">After that, of course, the previous content won<span class="symbol">'t</span> be recoverable.</span><br><span class="line"></span><br><span class="line">Warning: invalid flag <span class="number">0</span>x0000 of partition table <span class="number">4</span> will be corrected by w(<span class="name">rite</span>)</span><br><span class="line"></span><br><span class="line">WARNING: DOS-compatible mode is deprecated. It<span class="symbol">'s</span> strongly recommended to</span><br><span class="line">         switch off the mode (<span class="name">command</span> <span class="symbol">'c</span>') and change display units to</span><br><span class="line">         sectors (<span class="name">command</span> <span class="symbol">'u</span>').</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): n</span><br><span class="line">Command action</span><br><span class="line">   e   extended</span><br><span class="line">   p   primary partition (<span class="name">1-4</span>)</span><br><span class="line">p</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">1</span></span><br><span class="line">First cylinder (<span class="name">1-4307</span>, default <span class="number">1</span>): </span><br><span class="line">Using default value <span class="number">1</span></span><br><span class="line">Last cylinder, +cylinders or +size&#123;K,M,G&#125; (<span class="name">1-4307</span>, default <span class="number">4307</span>): <span class="number">+10</span>G</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): n</span><br><span class="line">Command action</span><br><span class="line">   e   extended</span><br><span class="line">   p   primary partition (<span class="name">1-4</span>)</span><br><span class="line">p</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">2</span></span><br><span class="line">First cylinder (<span class="name">1307-4307</span>, default <span class="number">1307</span>): </span><br><span class="line">Using default value <span class="number">1307</span></span><br><span class="line">Last cylinder, +cylinders or +size&#123;K,M,G&#125; (<span class="name">1307-4307</span>, default <span class="number">4307</span>): <span class="number">+10</span>G</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): n</span><br><span class="line">Command action</span><br><span class="line">   e   extended</span><br><span class="line">   p   primary partition (<span class="name">1-4</span>)</span><br><span class="line">p</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">3</span></span><br><span class="line">First cylinder (<span class="name">2613-4307</span>, default <span class="number">2613</span>): </span><br><span class="line">Using default value <span class="number">2613</span></span><br><span class="line">Last cylinder, +cylinders or +size&#123;K,M,G&#125; (<span class="name">2613-4307</span>, default <span class="number">4307</span>): <span class="number">+10</span>G</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): t  </span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">1</span></span><br><span class="line">Hex code (<span class="name">type</span> L to list codes): fd  #避免问题发生软RAID一定要调整分区类型为Linux raid auto(<span class="name">即id为fd</span>)</span><br><span class="line">Changed system type of partition <span class="number">1</span> to fd (<span class="name">Linux</span> raid autodetect)</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): t</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">2</span></span><br><span class="line">Hex code (<span class="name">type</span> L to list codes): fd</span><br><span class="line">Changed system type of partition <span class="number">2</span> to fd (<span class="name">Linux</span> raid autodetect)</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): t</span><br><span class="line">Partition number (<span class="name">1-4</span>): <span class="number">3</span></span><br><span class="line">Hex code (<span class="name">type</span> L to list codes): fd</span><br><span class="line">Changed system type of partition <span class="number">3</span> to fd (<span class="name">Linux</span> raid autodetect)</span><br><span class="line"></span><br><span class="line">Command (<span class="name">m</span> for help): w</span><br><span class="line">The partition table has been altered!</span><br><span class="line"></span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line">Syncing disks.</span><br></pre></td></tr></table></figure>
+<p>通知内核重读分区表<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># partx -a /dev/sdb</span></span><br><span class="line"><span class="keyword">BLKPG: </span>Device <span class="keyword">or </span>resource <span class="keyword">busy</span><br><span class="line"></span>error <span class="keyword">adding </span>partition <span class="number">1</span></span><br><span class="line"><span class="keyword">BLKPG: </span>Device <span class="keyword">or </span>resource <span class="keyword">busy</span><br><span class="line"></span>error <span class="keyword">adding </span>partition <span class="number">2</span></span><br><span class="line"><span class="keyword">BLKPG: </span>Device <span class="keyword">or </span>resource <span class="keyword">busy</span><br><span class="line"></span>error <span class="keyword">adding </span>partition <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>RAID设备创建</li>
+</ul>
+<p>使用mdadm工具创建RAID 1，chunk为128k，有一个空闲盘<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># mdadm -C /dev/md0 -a yes -n 2 -x 1 -c 128 -l 1 /dev/sdb&#123;1,2,3&#125;</span></span><br><span class="line">mdadm: Note: this<span class="built_in"> array </span>has metadata at the start<span class="built_in"> and</span><br><span class="line"></span>    may<span class="built_in"> not </span>be suitable as a boot device.  If you plan to</span><br><span class="line">    store '/boot' on this device please ensure that</span><br><span class="line">    your boot-loader understands md/v1.x metadata,<span class="built_in"> or </span>use</span><br><span class="line">    --metadata=0.90</span><br><span class="line">Continue creating array? y</span><br><span class="line">mdadm: Defaulting to version 1.2 metadata</span><br><span class="line">mdadm:<span class="built_in"> array </span>/dev/md0 started.</span><br></pre></td></tr></table></figure></p>
+<p>查看md的状态<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# cat /proc/mdstat  #同步中</span><br><span class="line">Personalities : [raid1] </span><br><span class="line">md0 : active raid1 sdb3[<span class="string">2</span>](<span class="link">S</span>) sdb2[1] sdb1[0]</span><br><span class="line"><span class="code">      10482176 blocks super 1.2 [2/2] [UU]</span></span><br><span class="line"><span class="code">      [===&gt;.................]  resync = 18.9% (1989376/10482176) finish=0.6min speed=221041K/sec</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">unused devices: <span class="xml"><span class="tag">&lt;<span class="name">none</span>&gt;</span></span></span><br><span class="line">[root@centos6 ~]# cat /proc/mdstat  #同步完成</span><br><span class="line">Personalities : [raid1] </span><br><span class="line">md0 : active raid1 sdb3[<span class="string">2</span>](<span class="link">S</span>) sdb2[1] sdb1[0]</span><br><span class="line"><span class="code">      10482176 blocks super 1.2 [2/2] [UU]</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">unused devices: <span class="xml"><span class="tag">&lt;<span class="name">none</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>查看创建的RAID设备的详细信息<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@centos6 ~]</span># <span class="selector-tag">mdadm</span> <span class="selector-tag">-D</span> /<span class="selector-tag">dev</span>/<span class="selector-tag">md0</span></span><br><span class="line">/<span class="selector-tag">dev</span>/<span class="selector-tag">md0</span>:</span><br><span class="line">        <span class="selector-tag">Version</span> : <span class="selector-tag">1</span><span class="selector-class">.2</span></span><br><span class="line">  <span class="selector-tag">Creation</span> <span class="selector-tag">Time</span> : <span class="selector-tag">Mon</span> <span class="selector-tag">Apr</span> <span class="selector-tag">11</span> <span class="selector-tag">20</span><span class="selector-pseudo">:17</span><span class="selector-pseudo">:28</span> <span class="selector-tag">2016</span></span><br><span class="line">     <span class="selector-tag">Raid</span> <span class="selector-tag">Level</span> : <span class="selector-tag">raid1</span></span><br><span class="line">     <span class="selector-tag">Array</span> <span class="selector-tag">Size</span> : <span class="selector-tag">10482176</span> (<span class="number">10.00</span> GiB <span class="number">10.73</span> GB)</span><br><span class="line">  <span class="selector-tag">Used</span> <span class="selector-tag">Dev</span> <span class="selector-tag">Size</span> : <span class="selector-tag">10482176</span> (<span class="number">10.00</span> GiB <span class="number">10.73</span> GB)</span><br><span class="line">   <span class="selector-tag">Raid</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">2</span></span><br><span class="line">  <span class="selector-tag">Total</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">3</span></span><br><span class="line">    <span class="selector-tag">Persistence</span> : <span class="selector-tag">Superblock</span> <span class="selector-tag">is</span> <span class="selector-tag">persistent</span></span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">Update</span> <span class="selector-tag">Time</span> : <span class="selector-tag">Mon</span> <span class="selector-tag">Apr</span> <span class="selector-tag">11</span> <span class="selector-tag">20</span><span class="selector-pseudo">:18</span><span class="selector-pseudo">:20</span> <span class="selector-tag">2016</span></span><br><span class="line">          <span class="selector-tag">State</span> : <span class="selector-tag">clean</span> </span><br><span class="line"> <span class="selector-tag">Active</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">2</span></span><br><span class="line"><span class="selector-tag">Working</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">3</span></span><br><span class="line"> <span class="selector-tag">Failed</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">0</span></span><br><span class="line">  <span class="selector-tag">Spare</span> <span class="selector-tag">Devices</span> : <span class="selector-tag">1</span></span><br><span class="line"></span><br><span class="line">           <span class="selector-tag">Name</span> : <span class="selector-tag">centos6</span><span class="selector-class">.7</span><span class="selector-pseudo">:0</span>  (local to host centos6.<span class="number">7</span>)</span><br><span class="line">           <span class="selector-tag">UUID</span> : <span class="selector-tag">5a709c74</span><span class="selector-pseudo">:6b893df0</span><span class="selector-pseudo">:83f19941</span><span class="selector-pseudo">:565699f7</span></span><br><span class="line">         <span class="selector-tag">Events</span> : <span class="selector-tag">17</span></span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">Number</span>   <span class="selector-tag">Major</span>   <span class="selector-tag">Minor</span>   <span class="selector-tag">RaidDevice</span> <span class="selector-tag">State</span></span><br><span class="line">       <span class="selector-tag">0</span>       <span class="selector-tag">8</span>       <span class="selector-tag">17</span>        <span class="selector-tag">0</span>      <span class="selector-tag">active</span> <span class="selector-tag">sync</span>   /<span class="selector-tag">dev</span>/<span class="selector-tag">sdb1</span></span><br><span class="line">       <span class="selector-tag">1</span>       <span class="selector-tag">8</span>       <span class="selector-tag">18</span>        <span class="selector-tag">1</span>      <span class="selector-tag">active</span> <span class="selector-tag">sync</span>   /<span class="selector-tag">dev</span>/<span class="selector-tag">sdb2</span></span><br><span class="line"></span><br><span class="line">       <span class="selector-tag">2</span>       <span class="selector-tag">8</span>       <span class="selector-tag">19</span>        <span class="selector-tag">-</span>      <span class="selector-tag">spare</span>   /<span class="selector-tag">dev</span>/<span class="selector-tag">sdb3</span></span><br></pre></td></tr></table></figure></p>
+<p>RAID设备格式化，文件系统为ext4<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># mke2fs -t ext4 /dev/md0</span></span><br><span class="line">mke<span class="number">2f</span>s <span class="number">1</span>.<span class="number">41</span>.<span class="number">12</span> (<span class="number">17</span>-May-2010)</span><br><span class="line">文件系统标签=</span><br><span class="line">操作系统:Linux</span><br><span class="line">块大小=<span class="number">4096</span> (log=<span class="number">2</span>)</span><br><span class="line">分块大小=<span class="number">4096</span> (log=<span class="number">2</span>)</span><br><span class="line">Stride=<span class="number">0</span> <span class="keyword">blocks, </span>Stripe width=<span class="number">0</span> <span class="keyword">blocks</span><br><span class="line"></span><span class="number">655360</span> inodes, <span class="number">2620544</span> <span class="keyword">blocks</span><br><span class="line"></span><span class="number">131027</span> <span class="keyword">blocks </span>(<span class="number">5</span>.<span class="number">00</span>%) reserved for the super user</span><br><span class="line">第一个数据块=<span class="number">0</span></span><br><span class="line">Maximum filesystem <span class="keyword">blocks=2684354560</span><br><span class="line"></span><span class="number">80</span> <span class="keyword">block </span>groups</span><br><span class="line"><span class="number">32768</span> <span class="keyword">blocks </span>per group, <span class="number">32768</span> fragments per group</span><br><span class="line"><span class="number">8192</span> inodes per group</span><br><span class="line">Superblock <span class="keyword">backups </span>stored on <span class="keyword">blocks: </span></span><br><span class="line">	<span class="number">32768</span>, <span class="number">98304</span>, <span class="number">163840</span>, <span class="number">229376</span>, <span class="number">294912</span>, <span class="number">819200</span>, <span class="number">884736</span>, <span class="number">1605632</span></span><br><span class="line"></span><br><span class="line">正在写入inode表: 完成                            </span><br><span class="line">Creating <span class="keyword">journal </span>(<span class="number">32768</span> <span class="keyword">blocks): </span>完成</span><br><span class="line">Writing superblocks <span class="keyword">and </span>filesystem accounting information: 完成</span><br><span class="line"></span><br><span class="line">This filesystem will <span class="keyword">be </span>automatically checked every <span class="number">31</span> mounts <span class="keyword">or</span><br><span class="line"></span><span class="number">180</span> days, whichever comes first.  Use tune<span class="number">2f</span>s -c <span class="keyword">or </span>-i to override.</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>挂载RAID设备</li>
+</ul>
+<p>将RAID设备设置开机可自动挂载至/backup目录<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]<span class="comment"># mkdir /backup  #创建/backup目录</span></span><br><span class="line">[root@centos6 ~]<span class="comment"># blkid /dev/md0 #查询设备的UUID，推荐使用UUID格式挂载</span></span><br><span class="line">/dev/md0: UUID=<span class="string">"f57b163a-0bc3-4b21-a388-a1586d84e943"</span> TYPE=<span class="string">"ext4"</span> </span><br><span class="line">[root@centos6 ~]<span class="comment"># vim /etc/fstab</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># /etc/fstab</span></span><br><span class="line"><span class="comment"># Created by anaconda on Fri Mar  4 11:09:09 2016</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Accessible filesystems, by reference, are maintained under '/dev/disk'</span></span><br><span class="line"><span class="comment"># See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="regexp">/dev/mapper/vg_centos6-lv_root /</span>                       ext4    defaults        <span class="number">1</span> <span class="number">1</span></span><br><span class="line">UUID=<span class="number">3</span>efc9d2d-ff60<span class="number">-4491</span><span class="number">-84</span>c4-e1beb6701b83 /boot                   ext4    defaults        <span class="number">1</span> <span class="number">2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_home /home                   ext4    defaults        <span class="number">1</span> <span class="number">2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_swap swap                    swap    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">devpts                  /dev/pts                devpts  gid=<span class="number">5</span>,mode=<span class="number">620</span>  <span class="number">0</span> <span class="number">0</span></span><br><span class="line">sysfs                   /sys                    sysfs   defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">proc                    /proc                   proc    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">UUID=f57b163a<span class="number">-0</span>bc3<span class="number">-4</span>b21-a388-a1586d84e943 /backup ext4 defaults <span class="number">0</span> <span class="number">0</span></span><br><span class="line">[root@centos6 ~]<span class="comment"># mount -a      #挂载支持自动挂载的设备</span></span><br><span class="line">[root@centos6 ~]<span class="comment"># df            #查看是否挂载成功</span></span><br><span class="line">Filesystem           <span class="number">1</span>K-blocks    Used Available Use% Mounted <span class="literal">on</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_root</span><br><span class="line">                      <span class="number">51475068</span> <span class="number">4071360</span>  <span class="number">44782268</span>   <span class="number">9</span>% /</span><br><span class="line">tmpfs                   <span class="number">502384</span>       <span class="number">0</span>    <span class="number">502384</span>   <span class="number">0</span>% /dev/shm</span><br><span class="line">/dev/sda1               <span class="number">487652</span>   <span class="number">37084</span>    <span class="number">424968</span>   <span class="number">9</span>% /boot</span><br><span class="line">/dev/mapper/vg_centos6-lv_home</span><br><span class="line">                      <span class="number">69608928</span>   <span class="number">54412</span>  <span class="number">66011888</span>   <span class="number">1</span>% /home</span><br><span class="line">/dev/md0              <span class="number">10186552</span>   <span class="number">23028</span>   <span class="number">9639416</span>   <span class="number">1</span>% /backup     <span class="comment">#表明挂载成功</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>测试</li>
+</ul>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 backup]# ls /backup</span><br><span class="line">lost+found</span><br><span class="line">[root@centos6 backup]#cp /etc/fstab /backup</span><br><span class="line">[root@centos6 ~]# ls /backup</span><br><span class="line">fstab  lost+found</span><br><span class="line">[root@centos6 ~]# mdadm /dev/md0 -f /dev/sdb1  #模拟一块硬盘损坏</span><br><span class="line">mdadm: <span class="keyword">set</span> /dev/sdb1 <span class="comment">faulty in</span> /dev/<span class="comment">md0</span></span><br><span class="line">[root@centos6 ~<span class="comment">]# mdadm -D</span> /dev/<span class="comment">md0  #</span>查看设备信息</span><br><span class="line">/dev/md0:</span><br><span class="line">        Version <span class="comment">: 1.2</span></span><br><span class="line">  Creation <span class="comment">Time : Mon Apr 11 20:17:28 2016</span></span><br><span class="line">     Raid <span class="comment">Level : raid1</span></span><br><span class="line">     Array <span class="comment">Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">  Used <span class="comment">Dev Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">   Raid <span class="comment">Devices : 2</span></span><br><span class="line">  Total <span class="comment">Devices : 3</span></span><br><span class="line">    Persistence <span class="comment">: Superblock is persistent</span></span><br><span class="line"></span><br><span class="line">    Update <span class="comment">Time : Mon Apr 11 21:03:48 2016</span></span><br><span class="line">          State <span class="comment">: clean, degraded, recovering  #</span>处于降级恢复模式</span><br><span class="line"> Active <span class="comment">Devices : 1</span></span><br><span class="line">Working <span class="comment">Devices : 2</span></span><br><span class="line"> Failed <span class="comment">Devices : 1</span></span><br><span class="line">  Spare <span class="comment">Devices : 1</span></span><br><span class="line"></span><br><span class="line"> Rebuild <span class="comment">Status : 43% complete</span></span><br><span class="line"></span><br><span class="line">           Name <span class="comment">: centos6.7:0  (local to host centos6.7)</span></span><br><span class="line">           UUID <span class="comment">: 5a709c74:6b893df0:83f19941:565699f7</span></span><br><span class="line">         Events <span class="comment">: 26</span></span><br><span class="line"></span><br><span class="line">    Number   <span class="comment">Major   Minor   RaidDevice State</span></span><br><span class="line">       2       8       19        0      spare <span class="comment">rebuilding</span>   /dev/<span class="comment">sdb3  #</span>空闲盘替代损坏硬盘，数据重建中</span><br><span class="line">       1       8       18        1      active <span class="comment">sync</span>   /dev/<span class="comment">sdb2</span></span><br><span class="line"></span><br><span class="line">       0       8       17        -      faulty   /dev/<span class="comment">sdb1   #</span>提示该硬盘损坏</span><br><span class="line">[root@centos6 ~<span class="comment">]# mdadm</span> /dev/<span class="comment">md0 -f</span> /dev/<span class="comment">sdb2  #</span>模拟再出现硬盘损坏</span><br><span class="line">mdadm: <span class="keyword">set</span> /dev/<span class="comment">sdb2 faulty in</span> /dev/<span class="comment">md0</span></span><br><span class="line">[root@centos6 ~<span class="comment">]# mdadm -D</span> /dev/<span class="comment">md0</span> </span><br><span class="line">/dev/md0:</span><br><span class="line">        Version <span class="comment">: 1.2</span></span><br><span class="line">  Creation <span class="comment">Time : Mon Apr 11 20:17:28 2016</span></span><br><span class="line">     Raid <span class="comment">Level : raid1</span></span><br><span class="line">     Array <span class="comment">Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">  Used <span class="comment">Dev Size : 10482176 (10.00 GiB 10.73 GB)</span></span><br><span class="line">   Raid <span class="comment">Devices : 2</span></span><br><span class="line">  Total <span class="comment">Devices : 3</span></span><br><span class="line">    Persistence <span class="comment">: Superblock is persistent</span></span><br><span class="line"></span><br><span class="line">    Update <span class="comment">Time : Mon Apr 11 21:10:20 2016</span></span><br><span class="line">          State <span class="comment">: clean, degraded    #</span>处于降级模式</span><br><span class="line"> Active <span class="comment">Devices : 1</span></span><br><span class="line">Working <span class="comment">Devices : 1</span></span><br><span class="line"> Failed <span class="comment">Devices : 2</span></span><br><span class="line">  Spare <span class="comment">Devices : 0</span></span><br><span class="line"></span><br><span class="line">           Name <span class="comment">: centos6.7:0  (local to host centos6.7)</span></span><br><span class="line">           UUID <span class="comment">: 5a709c74:6b893df0:83f19941:565699f7</span></span><br><span class="line">         Events <span class="comment">: 38</span></span><br><span class="line"></span><br><span class="line">    Number   <span class="comment">Major   Minor   RaidDevice State</span></span><br><span class="line">       2       8       19        0      active <span class="comment">sync</span>   /dev/<span class="comment">sdb3</span></span><br><span class="line">       2       0        0        2      removed    <span class="comment">#</span>此处硬盘缺失</span><br><span class="line"></span><br><span class="line">       0       8       17        -      faulty   /dev/<span class="comment">sdb1</span></span><br><span class="line">       1       8       18        -      faulty   /dev/<span class="comment">sdb2</span></span><br><span class="line">[root@centos6 ~<span class="comment">]# cat</span> /backup/<span class="comment">fstab    #</span>数据可正常访问</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># /etc/fstab</span><br><span class="line"># Created <span class="comment">by anaconda on Fri Mar  4 11:09:09 2016</span></span><br><span class="line">#</span><br><span class="line"># Accessible <span class="comment">filesystems, by reference, are maintained under</span> <span class="comment">'/dev/disk'</span></span><br><span class="line"># See <span class="comment">man pages fstab(5), findfs(8), mount(8) and</span>/<span class="keyword">or</span> blkid(<span class="number">8</span>) <span class="keyword">for</span> more info</span><br><span class="line">#</span><br><span class="line">/<span class="comment">dev</span>/mapper/<span class="comment">vg_centos6-lv_root</span> /                       ext4    defaults        <span class="number">1</span> <span class="number">1</span></span><br><span class="line">UUID=<span class="number">3</span>efc9d2d-ff60<span class="number">-4491</span><span class="number">-84</span>c4-e1beb6701b83 /<span class="comment">boot                   ext4    defaults        1 2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_home /home                   <span class="comment">ext4    defaults        1 2</span></span><br><span class="line">/dev/mapper/vg_centos6-lv_swap swap                    swap    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">devpts                  /dev/pts                devpts  gid=<span class="number">5</span>,mode=<span class="number">620</span>  <span class="number">0</span> <span class="number">0</span></span><br><span class="line">sysfs                   /sys                    <span class="comment">sysfs   defaults        0 0</span></span><br><span class="line">proc                    /proc                   proc    defaults        <span class="number">0</span> <span class="number">0</span></span><br><span class="line">UUID=f57b163a<span class="number">-0</span>bc3<span class="number">-4</span>b21-a388-a1586d84e943 /<span class="comment">backup ext4 defaults 0 0</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+            <a href="/tags/RAID/" rel="tag">#RAID</a>
+          
+            <a href="/tags/软件RAID/" rel="tag">#软件RAID</a>
+          
+            <a href="/tags/mdadm/" rel="tag">#mdadm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/01/VIM编辑器入门/" rel="next" title="VIM编辑器入门">
+                <i class="fa fa-chevron-left"></i> VIM编辑器入门
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="gzwzh1994" />
+          <p class="site-author-name" itemprop="name">gzwzh1994</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gzwzh1994" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAID简介"><span class="nav-number">1.</span> <span class="nav-text">RAID简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见RAID级别"><span class="nav-number">2.</span> <span class="nav-text">常见RAID级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结和对比"><span class="nav-number">2.1.</span> <span class="nav-text">总结和对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-6上的软件RAID的实现"><span class="nav-number">3.</span> <span class="nav-text">CentOS 6上的软件RAID的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件RAID实现过程"><span class="nav-number">3.1.</span> <span class="nav-text">软件RAID实现过程</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gzwzh1994</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("FxOjsFAHfwe9GUQwgokVUUhx-gzGzoHsz", "uVlSnORqlDd8QQft8fqqv5zK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
